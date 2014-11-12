@@ -5,7 +5,22 @@
     android:layout_height="match_parent"
     tools:context="edu.tamu.team1.project3.GameSetupFragment">
 
+    <r
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:layout_below="@+id/title"
+        />
 
     <Button
         android:id="@+id/start_game_button"
