@@ -1,19 +1,18 @@
 package edu.tamu.team1.project3;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link GameSetupFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link GameSetupFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -28,6 +27,7 @@ public class GameSetupFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    Button button;
 
     private OnFragmentInteractionListener mListener;
 
@@ -66,7 +66,10 @@ public class GameSetupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_game_setup, container, false);
+        View view = inflater.inflate(R.layout.fragment_game_setup, container, false);
+        button = (Button) view.findViewById(R.id.start_game_button);
+        button.setOnClickListener(gameButtonClick);
+        return view;
     }
 
     @Override
@@ -85,4 +88,12 @@ public class GameSetupFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    public View.OnClickListener gameButtonClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
+
 }

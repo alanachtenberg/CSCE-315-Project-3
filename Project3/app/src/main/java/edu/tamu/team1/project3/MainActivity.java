@@ -21,7 +21,7 @@ public class MainActivity extends ActionBarActivity implements
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    Toolbar toolbar;
+    Toolbar tb;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -32,6 +32,8 @@ public class MainActivity extends ActionBarActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tb = (Toolbar) findViewById(R.id.toolbar);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
