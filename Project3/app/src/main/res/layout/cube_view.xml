@@ -8,40 +8,40 @@
 
     <ImageView
         android:id="@+id/face"
-        android:layout_width="@dimen/cube_width"
-        android:layout_height="@dimen/cube_width"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#444444"
         android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha"
         android:visibility="visible" />
 
     <ImageView
         android:id="@+id/left"
-        android:layout_width="@dimen/cube_width"
-        android:layout_height="@dimen/cube_width"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#ffff00"
         android:src="@drawable/abc_ic_menu_copy_mtrl_am_alpha"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/top"
-        android:layout_width="@dimen/cube_width"
-        android:layout_height="@dimen/cube_width"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#ff00ff"
         android:src="@drawable/abc_ic_menu_paste_mtrl_am_alpha"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/right"
-        android:layout_width="@dimen/cube_width"
-        android:layout_height="@dimen/cube_width"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#00ffff"
         android:src="@drawable/abc_ic_menu_cut_mtrl_alpha"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/bottom"
-        android:layout_width="@dimen/cube_width"
-        android:layout_height="@dimen/cube_width"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#00ff00"
         android:src="@drawable/abc_ic_search_api_mtrl_alpha"
         android:visibility="gone" />
