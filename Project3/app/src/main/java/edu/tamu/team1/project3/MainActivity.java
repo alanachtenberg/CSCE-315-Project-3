@@ -1,135 +1,225 @@
 package edu.tamu.team1.project3;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewConfiguration;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import java.lang.reflect.Field;
 
 public class MainActivity extends ActionBarActivity implements
-        NavigationDrawerFragment.NavigationDrawerCallbacks,
         OnFragmentInteractionListener {
 
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
-    private NavigationDrawerFragment mNavigationDrawerFragment;
+    //Data members
+//------------------------------------------------------------------------------
     Toolbar tb;
+    Context context;
 
-    /**
-     * Used to store the last screen title. For use in {@link #restoreActionBar()}.
-     */
-    private CharSequence mTitle;
+    private String[] drawerItems;
+    private DrawerLayout drawerLayout;
+    private ListView drawerList;
+    private ActionBarDrawerToggle drawerToggle;
+    private CharSequence drawerTitle;
+    private CharSequence title;
 
+    //Lifecycle and Initialization
+//------------------------------------------------------------------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = this;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getOverflowMenu();
+        setupActionBar();
 
-        tb = (Toolbar) findViewById(R.id.toolbar);
+        Fragment fragment = GameSetupFragment.newInstance();
+        setFragment(fragment);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
 
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+        setupNavDrawer();
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = LearnFragment.newInstance("", "");
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            startActivity(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME));
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //ActionBar
+//------------------------------------------------------------------------------
+    //Forces three dot overflow on devices with hardware menu button.
+    //Some might consider this a hack...
+    private void getOverflowMenu() {
+        try {
+            ViewConfiguration config = ViewConfiguration.get(this);
+            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
+            if(menuKeyField != null) {
+                menuKeyField.setAccessible(true);
+                menuKeyField.setBoolean(config, false);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setupActionBar() {
+        tb = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(tb);
+
+        ActionBar ab = getSupportActionBar();
+        ab.setHomeButtonEnabled(true);
+        ab.setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if(drawerLayout.isDrawerOpen(drawerList)) {
+                    drawerLayout.closeDrawer(drawerList);
+                }
+                else {
+                    drawerLayout.openDrawer(drawerList);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    //Navigation Drawer
+//------------------------------------------------------------------------------
+    private void setupNavDrawer() {
+        drawerItems = new String[] {
+                getResources().getString(R.string.title_game_fragment),
+                getResources().getString(R.string.title_learn_fragment),
+                getResources().getString(R.string.title_settings_fragment)
+        };
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerList = (ListView) findViewById(R.id.left_drawer);
+
+        drawerList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, drawerItems));
+        drawerList.setOnItemClickListener(new MainActivity.DrawerItemClickListener());
+
+        title = drawerTitle = getTitle();
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(
+                this,
+                drawerLayout,
+                tb,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close) {
+
+            public void onDrawerClosed(View view) {
+                tb.setTitle(title);
+                supportInvalidateOptionsMenu();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                tb.setTitle(drawerTitle);
+                supportInvalidateOptionsMenu();
+            }
+        };
+        drawerLayout.setDrawerListener(drawerToggle);
+        drawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+    private void selectItem(int position) {
+        Fragment fragment = GameSetupFragment.newInstance();
+        Bundle data = new Bundle();
 
         switch(position) {
-            case 0: fragment = GameSetupFragment.newInstance("", "");
+            case 0:
+                fragment = GameSetupFragment.newInstance();
                 break;
-            case 1: fragment = LearnFragment.newInstance("", "");
+            case 1:
+                fragment = LearnFragment.newInstance();
                 break;
-            case 2: fragment = SettingsFragment.newInstance("", "");
+            case 2:
+                fragment = SettingsFragment.newInstance();
                 break;
         }
 
+        fragment.setArguments(data);
+        setFragment(fragment);
+        drawerList.setItemChecked(position, true);
+        setTitle(drawerItems[position]);
+        drawerLayout.closeDrawer(drawerList);
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment)
                 .commit();
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_game_fragment);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_learn_fragment);
-            case 3:
-                mTitle = getString(R.string.title_settings_fragment);
-                break;
-        }
-    }
-
-    public void restoreActionBar() {
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
-    }
-
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-            // Only show items in the action bar relevant to this screen
-            // if the drawer is not showing. Otherwise, let the drawer
-            // decide what to show in the action bar.
-            getMenuInflater().inflate(R.menu.main, menu);
-            restoreActionBar();
-            return true;
-        }
-        return super.onCreateOptionsMenu(menu);
+    public void setTitle(CharSequence title) {
+        this.title = title;
+        tb.setTitle(title);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Subject Title");
-            builder.setMessage("This is some more data about the subject you have selected! Aren't you so glad you are playing this game? Science is fun, y'all!");
-            builder.setPositiveButton("Cool", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
 
-                }
-            });
-            builder.setNegativeButton("I don't care", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                }
-            });
-            builder.show();
-
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
     public void onFragmentInteraction(String id) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = GameFragment.newInstance();
 
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit();
     }
 }
