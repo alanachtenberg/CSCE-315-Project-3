@@ -11,6 +11,7 @@
         android:layout_width="@dimen/cube_width"
         android:layout_height="@dimen/cube_width"
         android:background="#444444"
+        android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha"
         android:visibility="visible" />
 
     <ImageView
@@ -18,6 +19,7 @@
         android:layout_width="@dimen/cube_width"
         android:layout_height="@dimen/cube_width"
         android:background="#ffff00"
+        android:src="@drawable/abc_ic_menu_copy_mtrl_am_alpha"
         android:visibility="gone" />
 
     <ImageView
@@ -25,6 +27,7 @@
         android:layout_width="@dimen/cube_width"
         android:layout_height="@dimen/cube_width"
         android:background="#ff00ff"
+        android:src="@drawable/abc_ic_menu_paste_mtrl_am_alpha"
         android:visibility="gone" />
 
     <ImageView
@@ -32,6 +35,7 @@
         android:layout_width="@dimen/cube_width"
         android:layout_height="@dimen/cube_width"
         android:background="#00ffff"
+        android:src="@drawable/abc_ic_menu_cut_mtrl_alpha"
         android:visibility="gone" />
 
     <ImageView
@@ -39,6 +43,7 @@
         android:layout_width="@dimen/cube_width"
         android:layout_height="@dimen/cube_width"
         android:background="#00ff00"
+        android:src="@drawable/abc_ic_search_api_mtrl_alpha"
         android:visibility="gone" />
 
 </FrameLayout>

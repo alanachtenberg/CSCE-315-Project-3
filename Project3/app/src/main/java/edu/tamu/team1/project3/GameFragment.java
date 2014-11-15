@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class GameFragment extends Fragment {
@@ -30,6 +31,7 @@ public class GameFragment extends Fragment {
         }
     }
 
+    CubeView cube;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,17 +41,54 @@ public class GameFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_game, container, false);
 
         LinearLayout layout = (LinearLayout) view.findViewById(R.id.game_layout);
-        CubeView cube = new CubeView(context);
-        cube.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((CubeView)v).showLeft();
-            }
-        });
+        cube = new CubeView(context);
         layout.addView(cube);
+
+        Button bLeft = (Button) view.findViewById(R.id.bLeft);
+        bLeft.setOnClickListener(leftClick);
+        Button bTop = (Button) view.findViewById(R.id.bTop);
+        bTop.setOnClickListener(topClick);
+        Button bBottom = (Button) view.findViewById(R.id.bBottom);
+        bBottom.setOnClickListener(bottomClick);
+        Button bRight = (Button) view.findViewById(R.id.bRight);
+        bRight.setOnClickListener(rightClick);
 
         return view;
     }
+
+
+//click listeners
+//------------------------------------------------------------------------------
+    View.OnClickListener leftClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            cube.showLeft();
+        }
+    };
+
+    View.OnClickListener topClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            cube.showTop();
+        }
+    };
+
+    View.OnClickListener bottomClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            cube.showBottom();
+        }
+    };
+
+    View.OnClickListener rightClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            cube.showRight();
+        }
+    };
+
+
+//------------------------------------------------------------------------------
 
     @Override
     public void onAttach(Activity activity) {
