@@ -1,9 +1,12 @@
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true" >
+    android:fitsSystemWindows="true"
     android:background="@color/light_blue">
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,8 +17,10 @@
         >
         <ImageView
         android:id="@+id/main_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:paddingLeft="40dp"
+        android:layout_marginBottom="-20dp"
         android:src="@drawable/ic_m_cubed"
         />
 
@@ -23,9 +28,32 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="title"
-        android:layout_centerHorizontal="true"
+        android:text="Devlopers\n Alan Achteberg, Casey Brooks,\n Jacob Stone, Robby Grathwohl"
+        android:textColor="@color/transparent_dark_blue"
+
+        android:layout_gravity="center"
+        android:gravity="center"
         />
+        <!-- gravity centers text content, layout_gravity centers the textview object -->
+        <LinearLayout android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            >
+
+            <TextView
+                android:textColor="@color/dark_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Game Size:"
+                />
+            <Spinner
+                android:id="@+id/game_size_spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:entries="@array/game_sizes"
+                />
+        </LinearLayout>
 
     </LinearLayout>
     <Button
