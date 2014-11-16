@@ -1,9 +1,13 @@
 package edu.tamu.team1.project3;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +39,57 @@ public class GameFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            Bundle args = getArguments();
+            sizeX = args.getInt("SIZE_X", 4);
+            sizeY = args.getInt("SIZE_Y", 4);
+        }
+        else {
+            sizeX = 4;
+            sizeY = 4;
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         context = getActivity();
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_game, container, false);
+
+        //navigate back to main menu when back button is pressed
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                //only listen for up actions
+                if (event.getAction()!=KeyEvent.ACTION_UP)
+                    return true;
+
+                //prompt user to return if they hit back button
+                if(keyCode == KeyEvent.KEYCODE_BACK) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Exit Game?")
+                            .setMessage("Are you sure you want to return the the main menu? Your progress will be lost.")
+                            .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    getActivity().getSupportFragmentManager()
+                                            .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .create().show();
+
+                    return true;
+                }
+                else return false;
+            }
+        });
 
         cubeGrid = (GridView) view.findViewById(R.id.cube_grid);
         populateGrid();
@@ -55,9 +101,6 @@ public class GameFragment extends Fragment {
 //ListAdapter for grid and multiselect callbacks
 //------------------------------------------------------------------------------
     void populateGrid() {
-        sizeX = 4;
-        sizeY = 4;
-
         ArrayList<CubeView> cubes = new ArrayList<CubeView>();
 
         for(int i = 0; i < sizeX*sizeY; i++) {

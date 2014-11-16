@@ -13,7 +13,8 @@
     <string-array name="game_sizes">
                 <item>2x2</item>
                 <item>4x4</item>
-                <item>8x4</item>
-                <item>8x8</item>
+                <item>4x6</item>
+                <item>4x8</item>
+                <item>6x8</item>
     </string-array>
 </resources>
