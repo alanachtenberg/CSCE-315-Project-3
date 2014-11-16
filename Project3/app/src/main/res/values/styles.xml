@@ -6,6 +6,9 @@
         <item name="windowActionModeOverlay">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/medium_blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
+        <item name="colorAccent">@color/light_brown</item>
     </style>
 
 </resources>

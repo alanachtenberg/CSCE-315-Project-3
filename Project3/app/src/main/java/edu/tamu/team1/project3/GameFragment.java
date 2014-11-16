@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 
@@ -19,6 +19,7 @@ public class GameFragment extends Fragment {
     View view;
     GridView cubeGrid;
     int sizeX, sizeY;
+    CubeView cube;
 
     public static GameFragment newInstance() {
         GameFragment fragment = new GameFragment();
@@ -37,7 +38,6 @@ public class GameFragment extends Fragment {
         }
     }
 
-    CubeView cube;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -47,7 +47,6 @@ public class GameFragment extends Fragment {
 
         cubeGrid = (GridView) view.findViewById(R.id.cube_grid);
         populateGrid();
-
         setupButtons();
 
         return view;
@@ -58,58 +57,34 @@ public class GameFragment extends Fragment {
     void populateGrid() {
         sizeX = 4;
         sizeY = 4;
+
+        ArrayList<CubeView> cubes = new ArrayList<CubeView>();
+
+        for(int i = 0; i < sizeX*sizeY; i++) {
+            cubes.add(new CubeView(context));
+        }
+
         cubeGrid.setNumColumns(sizeX);
-        cubeGrid.setAdapter(new CubeAdapter(context));
+        cubeGrid.setAdapter(new CubeView.Adapter(context, cubes));
+        cubeGrid.setOnItemClickListener(itemClick);
+
+        cube = (CubeView) cubeGrid.getAdapter().getItem(0);
     }
 
-    public class CubeAdapter extends BaseAdapter {
-        private Context context;
-
-        ArrayList<CubeView> cubes;
-
-        // Constructor
-        public CubeAdapter(Context c){
-            context = c;
-            cubes = new ArrayList<CubeView>();
-
-            for(int i = 0; i < sizeX*sizeY; i++) {
-                cubes.add(new CubeView(context));
+    AdapterView.OnItemClickListener itemClick = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            CubeView.Adapter adapter = (CubeView.Adapter) cubeGrid.getAdapter();
+            if(adapter.getSelectedCount() < 2) {
+                adapter.select(position);
+            }
+            else if(adapter.getSelectedCount() == 2) {
+                if(((CubeView)adapter.getItem(position)).isChecked()) {
+                    adapter.select(position);
+                }
             }
         }
-
-        @Override
-        public int getCount() {
-            return cubes.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return cubes.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            View item = cubes.get(position);
-//            GridView.LayoutParams params = new GridView.LayoutParams(
-//                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//
-//            params.
-//
-//
-//
-//            item.setLayoutParams(params);
-
-
-            return item;
-        }
-
-    }
+    };
 
 
 //click listeners for click to reveal
@@ -128,28 +103,44 @@ public class GameFragment extends Fragment {
     View.OnClickListener leftClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            cube.showLeft();
+            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
+
+            for(CubeView cube : selectedCubes) {
+                cube.showLeft();
+            }
         }
     };
 
     View.OnClickListener topClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            cube.showTop();
+            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
+
+            for(CubeView cube : selectedCubes) {
+                cube.showTop();
+            }
         }
     };
 
     View.OnClickListener bottomClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            cube.showBottom();
+            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
+
+            for(CubeView cube : selectedCubes) {
+                cube.showBottom();
+            }
         }
     };
 
     View.OnClickListener rightClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            cube.showRight();
+            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
+
+            for(CubeView cube : selectedCubes) {
+                cube.showRight();
+            }
         }
     };
 
