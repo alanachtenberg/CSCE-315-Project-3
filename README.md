@@ -5,6 +5,7 @@ Android application
 
 
 **Team Members**
+
 Casey Brooks
 
 Alan Achtenberg
@@ -15,6 +16,7 @@ Jacob Stone
 
 
 **Compilation Instructions**
+
 This android application was built using Android Studio and the Gradle build; it cannot be run from within Eclipse. Dependencies are all managed by Gradle, handled from the build.gradle files, and so should take no additional configuration. It also uses the most recent APIs from Google for the Material Design theme, so you must make sure you have downloaded the following packages from the SDK Manager, or else it will not compile:
 
 -21.0.2 Built Tools
