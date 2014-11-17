@@ -12,8 +12,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="game_sizes">
                 <item>2x2</item>
+                <item>2x4</item>
+                <item>3x4</item>
                 <item>4x4</item>
-                <item>8x4</item>
-                <item>8x8</item>
+                <item>6x6</item>
     </string-array>
 </resources>
