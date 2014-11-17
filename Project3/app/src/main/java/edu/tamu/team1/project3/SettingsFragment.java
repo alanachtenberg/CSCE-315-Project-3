@@ -6,9 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class SettingsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
+    View view;
+    Button showSourcesButton;
+    TextView sourcesText;
 
     public static SettingsFragment newInstance() {
         SettingsFragment fragment = new SettingsFragment();
@@ -16,6 +21,7 @@ public class SettingsFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     public SettingsFragment() {
         // Required empty public constructor
     }
@@ -31,7 +37,11 @@ public class SettingsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        view = inflater.inflate(R.layout.fragment_settings, container, false);
+        showSourcesButton = (Button) view.findViewById(R.id.show_sources_button);//initialize button
+        sourcesText = (TextView) view.findViewById(R.id.sources_text_view);//initialize source text view
+        showSourcesButton.setOnClickListener(showButtonClick);//set click listener on button
+        return view;
     }
 
     @Override
@@ -50,4 +60,16 @@ public class SettingsFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    //toggles visibility of sources text
+    public View.OnClickListener showButtonClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+           if(sourcesText.getVisibility()==View.VISIBLE)//if text is visible
+               sourcesText.setVisibility(View.GONE);//collapse visibility
+           else
+               sourcesText.setVisibility(View.VISIBLE);//otherwise set to visible
+        }
+    };
+
 }
