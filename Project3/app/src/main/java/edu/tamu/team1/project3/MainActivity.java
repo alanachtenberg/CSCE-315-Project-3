@@ -215,11 +215,6 @@ public class MainActivity extends ActionBarActivity implements
 
     @Override
     public void onFragmentInteraction(String id) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        Fragment fragment = GameFragment.newInstance();
 
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
     }
 }
