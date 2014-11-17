@@ -9,7 +9,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="swipe_setting">Enable swipe to flip cube</string>
     <string-array name="game_sizes">
                 <item>2x2</item>
                 <item>2x4</item>

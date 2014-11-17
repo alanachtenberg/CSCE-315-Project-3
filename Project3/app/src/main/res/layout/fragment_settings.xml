@@ -2,12 +2,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="edu.tamu.team1.project3.SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/borderframe"
+
+        >
+
+        <TextView
+            android:id="@+id/swipe_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swipe_setting"
+            android:textSize="20dp"
+            android:textColor="@color/dark_brown"
+            android:layout_centerVertical="true"
+            />
+        <Switch
+            android:id="@+id/swipe_toggle_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+
+            />
+    </RelativeLayout>
 
 </LinearLayout>
