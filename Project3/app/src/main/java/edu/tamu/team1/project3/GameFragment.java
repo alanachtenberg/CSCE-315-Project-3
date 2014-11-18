@@ -26,10 +26,13 @@ public class GameFragment extends Fragment {
     int sizeX, sizeY;
     CubeView cube;
 
-    public static GameFragment newInstance() {
+    public static GameFragment newInstance(String dimen) {
         GameFragment fragment = new GameFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
+        String[] args = dimen.split("x");
+        Bundle bundle = new Bundle();
+        bundle.putInt("SIZE_X", Integer.parseInt(args[0]));
+        bundle.putInt("SIZE_Y", Integer.parseInt(args[1]));
+        fragment.setArguments(bundle);
         return fragment;
     }
     public GameFragment() {
@@ -126,10 +129,14 @@ public class GameFragment extends Fragment {
             else if(adapter.getSelectedCount() == 2) {
                 if(((CubeView)adapter.getItem(position)).isChecked()) {
                     adapter.select(position);
-                }
+              }
             }
         }
     };
+
+    void selectItem(int position) {
+
+    }
 
 
 //click listeners for click to reveal

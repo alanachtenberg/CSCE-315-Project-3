@@ -70,13 +70,7 @@ public class GameSetupFragment extends Fragment {
             String text = spinner.getSelectedItem().toString();
 
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            Fragment fragment = GameFragment.newInstance();
-
-            String[] args = text.split("x");
-            Bundle bundle = new Bundle();
-            bundle.putInt("SIZE_X", Integer.parseInt(args[0]));
-            bundle.putInt("SIZE_Y", Integer.parseInt(args[1]));
-            fragment.setArguments(bundle);
+            Fragment fragment = GameFragment.newInstance(text);
 
             fragmentManager.beginTransaction()
                     .replace(R.id.container, fragment)
