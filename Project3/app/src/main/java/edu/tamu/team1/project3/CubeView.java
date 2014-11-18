@@ -2,6 +2,8 @@ package edu.tamu.team1.project3;
 
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -162,8 +164,18 @@ public class CubeView extends FrameLayout implements Checkable {
     @Override
     public void setChecked(boolean checked) {
         selected = checked;
-        if(selected) face.setBackgroundResource(R.color.dark_blue);
-        else face.setBackgroundResource(R.color.light_blue);
+
+        TypedValue lightValue = new TypedValue();
+        TypedValue darkValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorPrimaryLight, lightValue, true);
+        int light = lightValue.data;
+        theme.resolveAttribute(R.attr.colorPrimaryDark, darkValue, true);
+        int dark = darkValue.data;
+
+
+        if(selected) face.setBackgroundColor(dark);
+        else face.setBackgroundColor(light);
     }
 
     @Override

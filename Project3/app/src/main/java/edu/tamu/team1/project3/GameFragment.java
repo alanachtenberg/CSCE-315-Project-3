@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -149,10 +150,14 @@ public class GameFragment extends Fragment {
         public void onClick(View v) {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2)
-                for(CubeView cube : selectedCubes) {
+            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
+                for (CubeView cube : selectedCubes) {
                     cube.showLeft();
                 }
+            }
+            else {
+                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -161,10 +166,14 @@ public class GameFragment extends Fragment {
         public void onClick(View v) {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2)
-                for(CubeView cube : selectedCubes) {
+            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
+                for (CubeView cube : selectedCubes) {
                     cube.showTop();
                 }
+            }
+            else {
+                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -173,10 +182,14 @@ public class GameFragment extends Fragment {
         public void onClick(View v) {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2)
-                for(CubeView cube : selectedCubes) {
+            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
+                for (CubeView cube : selectedCubes) {
                     cube.showBottom();
                 }
+            }
+            else {
+                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
@@ -185,10 +198,14 @@ public class GameFragment extends Fragment {
         public void onClick(View v) {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2)
-                for(CubeView cube : selectedCubes) {
+            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
+                for (CubeView cube : selectedCubes) {
                     cube.showRight();
                 }
+            }
+            else {
+                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 

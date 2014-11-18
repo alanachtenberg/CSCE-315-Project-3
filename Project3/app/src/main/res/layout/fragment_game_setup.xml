@@ -1,12 +1,9 @@
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/light_blue">
-
-
+    android:background="?attr/colorPrimary">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -29,8 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Devlopers\n Alan Achteberg, Casey Brooks,\n Jacob Stone, Robby Grathwohl"
-        android:textColor="@color/transparent_dark_blue"
-
+        android:textColor="?attr/colorPrimaryDark"
         android:layout_gravity="center"
         android:gravity="center"
         />
@@ -42,7 +38,7 @@
             >
 
             <TextView
-                android:textColor="@color/dark_blue"
+                android:textColor="?attr/colorPrimaryDark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Select Game Size:"

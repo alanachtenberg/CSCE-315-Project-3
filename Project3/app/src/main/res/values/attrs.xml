@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="theme_name" format="string"/>
+
+    <!-- Colors -->
+    <attr name="colorPrimaryLight" format="color"/>
+
+</resources>

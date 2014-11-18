@@ -11,20 +11,26 @@
 
     <style name="Blue" parent="AppTheme">
         <!-- Customize your theme here. -->
+        <item name="theme_name">Blue</item>
         <item name="colorPrimary">@color/blue2</item>
         <item name="colorPrimaryDark">@color/blue1</item>
+        <item name="colorPrimaryLight">@color/blue3</item>
     </style>
 
     <style name="Red" parent="AppTheme">
         <!-- Customize your theme here. -->
+        <item name="theme_name">Red</item>
         <item name="colorPrimary">@color/red2</item>
         <item name="colorPrimaryDark">@color/red1</item>
+        <item name="colorPrimaryLight">@color/red3</item>
     </style>
 
     <style name="Green" parent="AppTheme">
         <!-- Customize your theme here. -->
+        <item name="theme_name">Green</item>
         <item name="colorPrimary">@color/green2</item>
         <item name="colorPrimaryDark">@color/green1</item>
+        <item name="colorPrimaryLight">@color/green3</item>
     </style>
 
 </resources>

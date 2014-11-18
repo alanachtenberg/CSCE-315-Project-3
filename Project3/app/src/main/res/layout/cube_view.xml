@@ -10,7 +10,7 @@
         android:id="@+id/face"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_blue"
+        android:background="?attr/colorPrimaryLight"
         android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha"
         android:visibility="visible" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_blue"
+        android:background="?attr/colorPrimaryLight"
         android:src="@drawable/abc_ic_menu_copy_mtrl_am_alpha"
         android:visibility="gone" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_brown"
+        android:background="?attr/colorPrimaryLight"
         android:src="@drawable/abc_ic_menu_paste_mtrl_am_alpha"
         android:visibility="gone" />
 
@@ -34,7 +34,7 @@
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark_brown"
+        android:background="?attr/colorPrimaryLight"
         android:src="@drawable/abc_ic_search_api_mtrl_alpha"
         android:visibility="gone" />
 
@@ -42,7 +42,7 @@
         android:id="@+id/right"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/dark_blue"
+        android:background="?attr/colorPrimaryLight"
         android:src="@drawable/abc_ic_menu_cut_mtrl_alpha"
         android:visibility="gone" />
 
