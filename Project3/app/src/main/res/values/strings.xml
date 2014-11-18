@@ -10,10 +10,28 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
     <string name="swipe_setting">Enable swipe to flip cube</string>
+    <string name="fling_setting">Enable fling to flip cube</string>
+    <string name="theme_setting">Select theme</string>
+    <string name="topic_setting">Select game topic</string>
+    <string name="show_highscore">Show high-scores</string>
+    <string name="delete_highscore">Delete high-scores</string>
+    <string name="show_sources">Show Sources</string>
+    <string name="about">sample about app info</string>
     <string-array name="game_sizes">
                 <item>2x2</item>
                 <item>2x4</item>
                 <item>3x4</item>
                 <item>4x4</item>
     </string-array>
+    <string-array name="themes">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="topics">
+        <item>Fish</item>
+        <item>Topic 2</item>
+        <item>Topic 3</item>
+    </string-array>
+
 </resources>

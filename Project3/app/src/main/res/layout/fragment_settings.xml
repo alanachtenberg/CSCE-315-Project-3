@@ -10,47 +10,161 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/borderframe"
-        >
-        <TextView
-            android:id="@+id/swipe_text_view"
-            android:layout_width="wrap_content"
+         <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/swipe_setting"
-            android:textSize="20dp"
-            android:textColor="@color/dark_brown"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_toLeftOf="@+id/swipe_toggle_button"
-            android:layout_centerVertical="true"
+             android:layout_margin="2dp"
+            android:background="@drawable/borderframe"
+            >
+            <TextView
+                android:id="@+id/fling_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/fling_setting"
+                android:textSize="20dp"
+                android:textColor="@color/dark_brown"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/fling_switch"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_centerVertical="true"
             />
-        <Switch
-            android:id="@+id/swipe_toggle_button"
+            <Switch
+                android:id="@+id/fling_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+
+            />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/borderframe"
+            >
+            <TextView
+                android:id="@+id/swipe_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/swipe_setting"
+                android:textSize="20dp"
+                android:textColor="@color/dark_brown"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/swipe_switch"
+                />
+            <Switch
+            android:id="@+id/swipe_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-
             />
-    </RelativeLayout>
-    <TextView
-        android:id="@+id/sources_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sample source 1sldkjfasjdhfkjh\nsample source 2 ldsakfalksdjflsdakj"
-        android:textSize="20dp"
-        android:visibility="gone"
-     />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/borderframe"
+            >
+            <TextView
+                android:id="@+id/theme_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_setting"
+                android:textSize="20dp"
+                android:textColor="@color/dark_brown"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/theme_spinner"
+                />
+            <Spinner
+                android:id="@+id/theme_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:entries="@array/themes"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/borderframe"
+            >
+            <TextView
+                android:id="@+id/topic_spinner_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/topic_setting"
+                android:textSize="20dp"
+                android:textColor="@color/dark_brown"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/topic_spinner"
+                />
+            <Spinner
+                android:id="@+id/topic_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:entries="@array/topics"
+                />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/sources_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sample source 1sldkjfasjdhfkjh\nsample source 2 ldsakfalksdjflsdakj"
+            android:textSize="20dp"
+            android:visibility="gone"
+            />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/show_hs_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/delete_hs_button"
+        android:layout_margin="2dp"
+        android:text="@string/show_highscore"
+        android:textColor="@color/dark_brown"
+        android:background="@drawable/borderframe"
+        />
+    <Button
+        android:id="@+id/delete_hs_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/show_sources_button"
+        android:layout_margin="2dp"
+        android:text="@string/delete_highscore"
+        android:textColor="@color/dark_brown"
+        android:background="@drawable/borderframe"
+        />
     <Button
         android:id="@+id/show_sources_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/about_button"
+        android:layout_margin="2dp"
+        android:text="@string/show_sources"
+        android:textColor="@color/dark_brown"
+        android:background="@drawable/borderframe"
+        />
+    <Button
+        android:id="@+id/about_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Show Sources"
-        />
+        android:layout_margin="2dp"
+        android:text="About"
+        android:textColor="@color/dark_brown"
+        android:background="@drawable/borderframe"
         />
 </RelativeLayout>
