@@ -22,6 +22,9 @@
             android:text="@string/swipe_setting"
             android:textSize="20dp"
             android:textColor="@color/dark_brown"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toLeftOf="@+id/swipe_toggle_button"
             android:layout_centerVertical="true"
             />
         <Switch

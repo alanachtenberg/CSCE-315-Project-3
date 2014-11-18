@@ -53,7 +53,6 @@ public class MainActivity extends ActionBarActivity implements
         Fragment fragment = GameSetupFragment.newInstance();
         setFragment(fragment);
 
-
         setupNavDrawer();
     }
 

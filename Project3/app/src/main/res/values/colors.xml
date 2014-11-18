@@ -7,5 +7,21 @@
     <color name="dark_blue">#284b94</color>
     <color name="light_gray">#ADA495</color>
 
+    <!--Blue Theme Colors-->
+    <color name="blue1">#284b94</color>
+    <color name="blue2">#5884E0</color>
+    <color name="blue3">#7DA7FF</color>
+
+    <!--Red Theme Colors-->
+    <color name="red1">#571E1B</color>
+    <color name="red2">#8A302B</color>
+    <color name="red3">#D64B43</color>
+
+    <!--Green Theme Colors-->
+    <color name="green1">#26571B</color>
+    <color name="green2">#5ED642</color>
+    <color name="green3">#92D682</color>
+
+
     <color name="transparent_dark_blue">#55284b94</color>
 </resources>
