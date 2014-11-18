@@ -123,7 +123,7 @@ public class MainActivity extends ActionBarActivity implements
     private void setupNavDrawer() {
         drawerItems = new String[] {
                 getResources().getString(R.string.title_game_fragment),
-                getResources().getString(R.string.title_learn_fragment),
+                getResources().getString(R.string.title_topics_fragment),
                 getResources().getString(R.string.title_settings_fragment)
         };
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -173,7 +173,7 @@ public class MainActivity extends ActionBarActivity implements
                 fragment = GameSetupFragment.newInstance();
                 break;
             case 1:
-                fragment = LearnFragment.newInstance();
+                fragment = TopicsFragment.newInstance();
                 break;
             case 2:
                 fragment = SettingsFragment.newInstance();

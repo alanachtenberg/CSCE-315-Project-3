@@ -3,7 +3,7 @@
 
     <string name="app_name">M Cubed</string>
     <string name="title_game_fragment">Game</string>
-    <string name="title_learn_fragment">Topics</string>
+    <string name="title_topics_fragment">Topics</string>
     <string name="title_settings_fragment">Settings</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -32,6 +32,19 @@
         <item>Fish</item>
         <item>Topic 2</item>
         <item>Topic 3</item>
+    </string-array>
+    <string-array name="fish">
+        <item>fishie 1</item>
+        <item>fishie 2</item>
+        <item>fishie 3</item>
+    </string-array>
+    <string-array name="topic_2">
+        <item>item 1</item>
+        <item>item 2</item>
+    </string-array>
+    <string-array name="topic_3">
+        <item>item 1</item>
+        <item>item 2</item>
     </string-array>
 
 </resources>
