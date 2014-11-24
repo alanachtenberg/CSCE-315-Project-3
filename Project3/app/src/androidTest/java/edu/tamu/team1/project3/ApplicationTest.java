@@ -69,6 +69,8 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
     }
 
     public void testXMLParsing() throws Throwable {
+        //instantiate XML parsing class
+
 
     }
 }

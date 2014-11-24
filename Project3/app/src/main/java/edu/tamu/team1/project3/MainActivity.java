@@ -2,6 +2,7 @@ package edu.tamu.team1.project3;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -44,6 +45,20 @@ public class MainActivity extends ActionBarActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
+
+        String[] themes = context.getResources().getStringArray(R.array.themes);
+        SharedPreferences preferences = context.getSharedPreferences("msettings", 0);
+        String theme = preferences.getString("THEME", "Red");
+
+        if(theme.equals("Red")) {
+            setTheme(R.style.Red);
+        }
+        else if(theme.equals("Green")) {
+            setTheme(R.style.Green);
+        }
+        else if(theme.equals("Blue")) {
+            setTheme(R.style.Blue);
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

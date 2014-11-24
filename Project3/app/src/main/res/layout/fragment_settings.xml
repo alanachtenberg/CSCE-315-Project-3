@@ -14,11 +14,10 @@
          <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-             android:layout_margin="2dp"
+            android:layout_margin="2dp"
             android:background="@drawable/borderframe"
             >
             <TextView
-                android:id="@+id/fling_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fling_setting"
@@ -45,7 +44,6 @@
             android:background="@drawable/borderframe"
             >
             <TextView
-                android:id="@+id/swipe_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/swipe_setting"
@@ -71,7 +69,6 @@
             android:background="@drawable/borderframe"
             >
             <TextView
-                android:id="@+id/theme_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/theme_setting"
@@ -98,7 +95,6 @@
             android:background="@drawable/borderframe"
             >
             <TextView
-                android:id="@+id/topic_spinner_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/topic_setting"
@@ -129,17 +125,17 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/show_hs_button"
+        android:id="@+id/show_high_scores_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/delete_hs_button"
+        android:layout_above="@+id/delete_high_scores_button"
         android:layout_margin="2dp"
         android:text="@string/show_highscore"
         android:textColor="@color/dark_brown"
         android:background="@drawable/borderframe"
         />
     <Button
-        android:id="@+id/delete_hs_button"
+        android:id="@+id/delete_high_scores_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/show_sources_button"

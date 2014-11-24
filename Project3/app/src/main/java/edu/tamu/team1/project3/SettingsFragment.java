@@ -2,24 +2,41 @@ package edu.tamu.team1.project3;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
-
-import java.util.HashMap;
-import java.util.List;
+import android.widget.Toast;
 
 public class SettingsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     View view;
+    Context context;
+
+    Button showHighScoresButton;
+    Button deleteHighScoresButton;
     Button showSourcesButton;
+    Button aboutButton;
+
+    Switch flingSwitch;
+    Switch swipeSwitch;
+
+    Spinner themeSpinner;
+    Spinner topicSpinner;
+
     TextView sourcesText;
+
+    boolean inhibitThemeSpinner;
+    boolean inhibitTopicSpinner;
 
     public static SettingsFragment newInstance() {
         SettingsFragment fragment = new SettingsFragment();
@@ -44,9 +61,52 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_settings, container, false);
-        showSourcesButton = (Button) view.findViewById(R.id.show_sources_button);//initialize button
-        sourcesText = (TextView) view.findViewById(R.id.sources_text_view);//initialize source text view
-        showSourcesButton.setOnClickListener(showButtonClick);//set click listener on button
+        context = getActivity();
+
+        inhibitThemeSpinner = true;
+        inhibitTopicSpinner = true;
+
+        //switches
+        flingSwitch = (Switch) view.findViewById(R.id.fling_switch);
+        flingSwitch.setOnCheckedChangeListener(flingChange);
+        swipeSwitch = (Switch) view.findViewById(R.id.swipe_switch);
+        swipeSwitch.setOnCheckedChangeListener(swipeChange);
+
+        //spinners
+        themeSpinner = (Spinner) view.findViewById(R.id.theme_spinner);
+        themeSpinner.setOnItemSelectedListener(themeSelected);
+        topicSpinner = (Spinner) view.findViewById(R.id.topic_spinner);
+        topicSpinner.setOnItemSelectedListener(topicSelected);
+
+        String[] themes = context.getResources().getStringArray(R.array.themes);
+        SharedPreferences preferences = context.getSharedPreferences("msettings", 0);
+        String theme = preferences.getString("THEME", "Red");
+
+        if(theme.equals("Red")) {
+            themeSpinner.setSelection(0);
+        }
+        else if(theme.equals("Green")) {
+            themeSpinner.setSelection(1);
+        }
+        else if(theme.equals("Blue")) {
+            themeSpinner.setSelection(2);
+        }
+
+        //buttons
+        showHighScoresButton = (Button) view.findViewById(R.id.show_high_scores_button);
+        showHighScoresButton.setOnClickListener(showHighScoresClick);
+
+        deleteHighScoresButton = (Button) view.findViewById(R.id.delete_high_scores_button);
+        deleteHighScoresButton.setOnClickListener(deleteHighScoresClick);
+
+        showSourcesButton = (Button) view.findViewById(R.id.show_sources_button);
+        showSourcesButton.setOnClickListener(showSourcesClick);
+
+        aboutButton = (Button) view.findViewById(R.id.about_button);
+        aboutButton.setOnClickListener(aboutClick);
+
+        sourcesText = (TextView) view.findViewById(R.id.sources_text_view);
+
         return view;
     }
 
@@ -67,14 +127,105 @@ public class SettingsFragment extends Fragment {
         mListener = null;
     }
 
-    //toggles visibility of sources text
-    public View.OnClickListener showButtonClick = new View.OnClickListener() {
+//Click listeners for settings items
+//------------------------------------------------------------------------------
+
+    //switch listeners
+    CompoundButton.OnCheckedChangeListener flingChange = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Toast.makeText(context, "Fling - " + isChecked, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    CompoundButton.OnCheckedChangeListener swipeChange = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Toast.makeText(context, "Swipe - " + isChecked, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
+    //Spinner listeners
+    AdapterView.OnItemSelectedListener themeSelected = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if (inhibitThemeSpinner) {
+                inhibitThemeSpinner = false;
+            }
+            else {
+                SharedPreferences preferences = context.getSharedPreferences("msettings", 0);
+                String[] themes = context.getResources().getStringArray(R.array.themes);
+
+                preferences.edit().putString("THEME", themes[position]).apply();
+
+                Intent intent = getActivity().getIntent();
+                getActivity().overridePendingTransition(0, android.R.anim.fade_out);
+                getActivity().finish();
+                getActivity().overridePendingTransition(android.R.anim.fade_in, 0);
+                startActivity(intent);
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+    AdapterView.OnItemSelectedListener topicSelected = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if (inhibitTopicSpinner) {
+                inhibitTopicSpinner = false;
+            }
+            else {
+                String[] topics = context.getResources().getStringArray(R.array.topics);
+                Toast.makeText(context, "Topic - " + topics[position], Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    };
+
+
+
+    //button listeners
+    public View.OnClickListener showHighScoresClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-           if(sourcesText.getVisibility()==View.VISIBLE)//if text is visible
-               sourcesText.setVisibility(View.GONE);//collapse visibility
-           else
-               sourcesText.setVisibility(View.VISIBLE);//otherwise set to visible
+            Toast.makeText(context, "Show High Scores", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    //toggles visibility of sources text
+    public View.OnClickListener deleteHighScoresClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, "Delete High Scores", Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    //toggles visibility of sources text
+    public View.OnClickListener showSourcesClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, "Show Sources", Toast.LENGTH_SHORT).show();
+//            if(sourcesText.getVisibility()==View.VISIBLE)//if text is visible
+//                sourcesText.setVisibility(View.GONE);//collapse visibility
+//            else
+//                sourcesText.setVisibility(View.VISIBLE);//otherwise set to visible
+        }
+    };
+
+    //toggles visibility of sources text
+    public View.OnClickListener aboutClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Toast.makeText(context, "About", Toast.LENGTH_SHORT).show();
         }
     };
 
