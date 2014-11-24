@@ -26,7 +26,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         return frag;
     }
 
-    public void testFragment() throws Throwable {
+    public void testUI() throws Throwable {
         //check to make sure fragments get instantiated correctly
         GameSetupFragment fragPre = GameSetupFragment.newInstance();
         Fragment fragPost = startFragment(fragPre);
@@ -66,7 +66,9 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
                 assertEquals(2, selectedCount); //2 cubes selected after several more presses
             }
         });
+    }
 
+    public void testXMLParsing() throws Throwable {
 
     }
 }
