@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,18 +47,28 @@ public class MainActivity extends ActionBarActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         context = this;
 
-        String[] themes = context.getResources().getStringArray(R.array.themes);
         SharedPreferences preferences = context.getSharedPreferences("msettings", 0);
-        String theme = preferences.getString("THEME", "Red");
+        boolean firstTime = preferences.getBoolean("FIRST_TIME", true);
 
-        if(theme.equals("Red")) {
-            setTheme(R.style.Red);
+        //if it is the first time opening the app, add the xml files in the
+        //xml resource directory to internal storage
+        try {
+            if(firstTime) {
+                Settings.create(this);
+            }
+            String theme = Settings.getSettingsTheme();
+
+            if (theme.equals("Red")) {
+                setTheme(R.style.Red);
+            } else if (theme.equals("Green")) {
+                setTheme(R.style.Green);
+            } else if (theme.equals("Blue")) {
+                setTheme(R.style.Blue);
+            }
         }
-        else if(theme.equals("Green")) {
-            setTheme(R.style.Green);
-        }
-        else if(theme.equals("Blue")) {
-            setTheme(R.style.Blue);
+        catch(Exception e) {
+            e.printStackTrace();
+            Log.e("SET THEME", e.getMessage());
         }
 
         super.onCreate(savedInstanceState);

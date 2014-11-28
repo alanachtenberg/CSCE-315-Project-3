@@ -3,7 +3,6 @@ package edu.tamu.team1.project3;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -78,18 +77,19 @@ public class SettingsFragment extends Fragment {
         topicSpinner = (Spinner) view.findViewById(R.id.topic_spinner);
         topicSpinner.setOnItemSelectedListener(topicSelected);
 
-        String[] themes = context.getResources().getStringArray(R.array.themes);
-        SharedPreferences preferences = context.getSharedPreferences("msettings", 0);
-        String theme = preferences.getString("THEME", "Red");
+        try {
+            String theme = Settings.getSettingsTheme();
 
-        if(theme.equals("Red")) {
-            themeSpinner.setSelection(0);
+            if (theme.equals("Red")) {
+                themeSpinner.setSelection(0);
+            } else if (theme.equals("Green")) {
+                themeSpinner.setSelection(1);
+            } else if (theme.equals("Blue")) {
+                themeSpinner.setSelection(2);
+            }
         }
-        else if(theme.equals("Green")) {
-            themeSpinner.setSelection(1);
-        }
-        else if(theme.equals("Blue")) {
-            themeSpinner.setSelection(2);
+        catch(Exception e) {
+            e.printStackTrace();
         }
 
         //buttons
@@ -154,10 +154,15 @@ public class SettingsFragment extends Fragment {
                 inhibitThemeSpinner = false;
             }
             else {
-                SharedPreferences preferences = context.getSharedPreferences("msettings", 0);
+
                 String[] themes = context.getResources().getStringArray(R.array.themes);
 
-                preferences.edit().putString("THEME", themes[position]).apply();
+                try {
+                    new Settings().setTheme(themes[position]);
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
 
                 Intent intent = getActivity().getIntent();
                 getActivity().overridePendingTransition(0, android.R.anim.fade_out);

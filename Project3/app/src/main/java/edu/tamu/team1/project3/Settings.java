@@ -1,12 +1,16 @@
 package edu.tamu.team1.project3;
 
+import android.content.Context;
+import android.os.Environment;
+import android.widget.Toast;
+
 import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
+import org.w3c.dom.Node;
 
-import java.io.StringReader;
-import java.io.StringWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -15,20 +19,45 @@ import javax.xml.transform.stream.StreamResult;
 
 public class Settings {
     public Settings(){}
-    public String getSettingsXML(String file) throws Exception{
-        String xml = null;
 
-        DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
-        InputSource is = new InputSource(file);
-        Document document = docBuilderFactory.newDocumentBuilder().parse(is);
+    //copies raw resource onto the SD card
+    public static boolean create(Context context) throws Exception {
+        try {
+            String state = Environment.getExternalStorageState();
+            if (Environment.MEDIA_MOUNTED.equals(state)) {
+                String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed/msetting.xml";
+                File xmlFile = new File(path);
 
-        StringWriter sw = new StringWriter();
-        Transformer serializer = TransformerFactory.newInstance().newTransformer();
-        serializer.transform(new DOMSource(document), new StreamResult(sw));
+                if(!xmlFile.exists()) {
+                    xmlFile.mkdirs();
+                }
 
-        xml = sw.toString();
-        return xml;
+                InputStream input = context.getResources().openRawResource(R.raw.settings);
+
+                Document doc = DocumentBuilderFactory
+                        .newInstance()
+                        .newDocumentBuilder()
+                        .parse(input);
+
+                Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                DOMSource source = new DOMSource(doc);
+                StreamResult result = new StreamResult(xmlFile);
+                transformer.transform(source, result);
+
+                return true;
+
+            }
+            else {
+                Toast.makeText(context, "Unable to open external storage. Check if SD card is installed properly", Toast.LENGTH_LONG).show();
+                return false;
+            }
+        }
+        catch(IOException e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
+
     // Functions used for getting and setting the Fling setting for the game
     public void setFling(boolean x) throws Exception{
 
@@ -44,20 +73,39 @@ public class Settings {
         return false;
     }
     // Functions used for getting and setting the theme of the game
-    public void setTheme(String theme){
+    public void setTheme(String theme) throws Exception {
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
 
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+
+        Node themeNode = doc.getElementsByTagName("theme").item(0);
+        themeNode.setTextContent(theme);
+
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(path));
+        transformer.transform(source, result);
+
+        //I have no idea why, but it doesn't seem to like writing to the original
+        //file created from the raw resource. But redirecting it to another file
+        //seems to work just fine, so use this format for all settings
+        String path2 = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        StreamResult result2 = new StreamResult(new File(path2));
+        transformer.transform(source, result2);
     }
 
-    public String getSettingsTheme() throws Exception{
+    public static String getSettingsTheme() throws Exception{
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
 
-        String xml = getSettingsXML("settings.xml");
-        DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        InputSource src = new InputSource();
-        src.setCharacterStream(new StringReader(xml));
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
 
-        Document doc = builder.parse(src);
-        String theme = doc.getElementsByTagName("theme").item(0).getTextContent();
-        return theme;
+        return doc.getElementsByTagName("theme").item(0).getTextContent();
     }
     // Functions used for getting and setting the topic of the game
     public void setTopic(String topic){
