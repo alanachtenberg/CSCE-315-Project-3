@@ -63,21 +63,110 @@ public class Settings {
         }
     }
 
-    // Functions used for getting and setting the Fling setting for the game
+//======================================================================
+// Functions used for getting and setting the Fling setting for the game
+//======================================================================
+
     public void setFling(boolean x) throws Exception{
 
-    }
-    public boolean getFling(){
-        return false;
-    }
-    // Functions used for getting and setting the Swipe setting for the game
-    public void setSwipe(boolean x){
+        String check;
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
 
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+
+        if(!x)
+            check = "false";
+        else
+            check = "true";
+
+        Node themeNode = doc.getElementsByTagName("fling").item(0);     // get item by tag name
+        themeNode.setTextContent(check);                                // set the correct value
+
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(path));
+        transformer.transform(source, result);
+
+        // redirect to another file in order to make it work
+        String path2 = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        StreamResult result2 = new StreamResult(new File(path2));
+        transformer.transform(source, result2);
     }
-    public boolean getSwipe(){
-        return false;
+
+    public boolean getFling() throws Exception {
+        String check;
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+
+        check =  doc.getElementsByTagName("fling").item(0).getTextContent();
+
+        if(check.equals("true"))
+            return true;
+        else
+            return false;
     }
-    // Functions used for getting and setting the theme of the game
+
+//======================================================================
+// Functions used for getting and setting the Swipe setting for the game
+//======================================================================
+
+    public void setSwipe(boolean x) throws Exception {
+        String check;
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
+
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+
+        if(!x)
+            check = "false";
+        else
+            check = "true";
+
+        Node themeNode = doc.getElementsByTagName("swipe").item(0);     // get item by tag name
+        themeNode.setTextContent(check);                                // set the correct value
+
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(path));
+        transformer.transform(source, result);
+
+        // redirect to another file in order to make it work
+        String path2 = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        StreamResult result2 = new StreamResult(new File(path2));
+        transformer.transform(source, result2);
+    }
+
+    public boolean getSwipe() throws Exception {
+        String check;
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+
+        // Return the text associated with <swipe>TEXT</swipe>
+        check =  doc.getElementsByTagName("swipe").item(0).getTextContent();
+
+        if(check.equals("true"))
+            return true;
+        else
+            return false;
+    }
+
+//==============================================================
+// Functions used for getting and setting the theme of the game
+//==============================================================
+
     public void setTheme(String theme) throws Exception {
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
         File xmlFile = new File(path);
@@ -86,8 +175,8 @@ public class Settings {
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(xmlFile);
 
-        Node themeNode = doc.getElementsByTagName("theme").item(0);
-        themeNode.setTextContent(theme);
+        Node themeNode = doc.getElementsByTagName("theme").item(0);     // get item by tag name
+        themeNode.setTextContent(theme);                                // set the correct value
 
         DOMSource source = new DOMSource(doc);
         StreamResult result = new StreamResult(xmlFile);
@@ -113,13 +202,45 @@ public class Settings {
                 .newDocumentBuilder()
                 .parse(new File(path));
 
+        // Return the text associated with <theme>TEXT</theme>
         return doc.getElementsByTagName("theme").item(0).getTextContent();
     }
-    // Functions used for getting and setting the topic of the game
-    public void setTopic(String topic){
 
+//==============================================================
+// Functions used for getting and setting the topic of the game
+//==============================================================
+
+    public void setTopic(String topic) throws Exception {
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
+
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+
+        Node themeNode = doc.getElementsByTagName("topic").item(0);     // get item by tag name
+        themeNode.setTextContent(topic);                                // set the correct value
+
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(path));
+        transformer.transform(source, result);
+
+        // redirect to another file in order to make it work
+        String path2 = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        StreamResult result2 = new StreamResult(new File(path2));
+        transformer.transform(source, result2);
     }
-    public String getTopic(){
-        return null;
+
+    public static String getSettingsTopic() throws Exception{
+        // get the path to our settings.xml file
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        // Define factory API with the settings.xml file
+        Document doc = DocumentBuilderFactory
+                .newInstance()
+                .newDocumentBuilder()
+                .parse(new File(path));
+        // Return the text associated with <topic>TEXT</topic>
+        return doc.getElementsByTagName("topic").item(0).getTextContent();
     }
 }
