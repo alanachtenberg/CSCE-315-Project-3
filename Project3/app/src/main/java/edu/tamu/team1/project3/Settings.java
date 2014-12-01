@@ -25,8 +25,14 @@ public class Settings {
         try {
             String state = Environment.getExternalStorageState();
             if (Environment.MEDIA_MOUNTED.equals(state)) {
-                String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed/msetting.xml";
-                File xmlFile = new File(path);
+                String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
+                File folder = new File(path);
+
+                if(!folder.exists()) {
+                    folder.mkdirs();
+                }
+
+                File xmlFile = new File(path, "msetting.xml");
 
                 if(!xmlFile.exists()) {
                     xmlFile.mkdirs();
