@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
 
 public class GameFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
@@ -98,6 +101,8 @@ public class GameFragment extends Fragment {
         cubeGrid = (GridView) view.findViewById(R.id.cube_grid);
         populateGrid();
         setupButtons();
+//        if(Settings.get)
+//        setupFling();
 
         return view;
     }
@@ -106,9 +111,51 @@ public class GameFragment extends Fragment {
 //------------------------------------------------------------------------------
     void populateGrid() {
         ArrayList<CubeView> cubes = new ArrayList<CubeView>();
+        ArrayList<ArrayList<Integer>> faceElements = new ArrayList<ArrayList<Integer>>();
 
-        for(int i = 0; i < sizeX*sizeY; i++) {
+        //setup large pool of all available elements for the sides of the cube
+        for(int j = 0; j < 4; j++) {
+            faceElements.add(new ArrayList<Integer>());
+            for (int i = 0; i < (sizeX * sizeY) / 2; i++) {
+                faceElements.get(j).add(i);
+                faceElements.get(j).add(i);
+//                Log.i("ITEM NUMBER", "" + i);
+            }
+        }
+
+        //create all the cubes for the game
+        for (int i = 0; i < sizeX * sizeY; i++) {
             cubes.add(new CubeView(context));
+        }
+
+        //create cubes and pull a random element from the pool to set as each face
+        Random random = new Random(Calendar.getInstance().getTimeInMillis());
+
+        for(int j = 0; j < 4; j++) {
+            for (int i = 0; i < sizeX * sizeY; i++) {
+                //the cube to edit
+                CubeView cube = cubes.get(i);
+
+                //get random item from list and remove it from list
+                int pos = random.nextInt(faceElements.get(j).size());
+                int randomItem = faceElements.get(j).get(pos);
+                Log.i("RANDOM ITEM", randomItem + "");
+                faceElements.get(j).remove(pos);
+                switch (j) {
+                    case 0:
+                        cube.setLeftFace(randomItem);
+                        break;
+                    case 1:
+                        cube.setTopFace(randomItem);
+                        break;
+                    case 2:
+                        cube.setRightFace(randomItem);
+                        break;
+                    case 3:
+                        cube.setBottomFace(randomItem);
+                        break;
+                }
+            }
         }
 
         cubeGrid.setNumColumns(sizeX);

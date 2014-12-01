@@ -6,44 +6,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ImageView
+    <TextView
         android:id="@+id/face"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
-        android:src="@drawable/abc_ic_menu_selectall_mtrl_alpha"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="64dp"
+        android:text="4"
         android:visibility="visible" />
 
-    <ImageView
+    <TextView
         android:id="@+id/left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
-        android:src="@drawable/abc_ic_menu_copy_mtrl_am_alpha"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="64dp"
+        android:text="L"
         android:visibility="gone" />
 
-    <ImageView
+    <TextView
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
-        android:src="@drawable/abc_ic_menu_paste_mtrl_am_alpha"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="64dp"
+        android:text="T"
         android:visibility="gone" />
 
-    <ImageView
+    <TextView
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
-        android:src="@drawable/abc_ic_search_api_mtrl_alpha"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="64dp"
+        android:text="B"
         android:visibility="gone" />
 
-    <ImageView
+    <TextView
         android:id="@+id/right"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
-        android:src="@drawable/abc_ic_menu_cut_mtrl_alpha"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="64dp"
+        android:text="R"
         android:visibility="gone" />
 
 </FrameLayout>
