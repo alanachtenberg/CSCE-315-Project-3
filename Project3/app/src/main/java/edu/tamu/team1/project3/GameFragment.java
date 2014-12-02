@@ -7,8 +7,12 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GestureDetectorCompat;
+import android.util.Log;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,6 +27,8 @@ public class GameFragment extends Fragment {
     Context context;
     View view;
     GridView cubeGrid;
+    Button bLeft, bRight, bBottom, bTop;
+    GestureDetectorCompat detector;//for detecting touch gestures
     int sizeX, sizeY;
     CubeView cube;
 
@@ -98,9 +104,37 @@ public class GameFragment extends Fragment {
         cubeGrid = (GridView) view.findViewById(R.id.cube_grid);
         populateGrid();
         setupButtons();
+        detector= new GestureDetectorCompat(view.getContext(), new MyGestureListener());
+        cubeGrid.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                detector.onTouchEvent(event);
+                return false;//return false to allow
+            }
+        });
 
         return view;
     }
+
+//Guesture listener for cube view
+//------------------------------------------------------------------------------
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+        private static final String DEBUG_TAG = "Gestures";
+
+        @Override
+        public boolean onDown(MotionEvent event) {
+            Log.d(DEBUG_TAG, "onDown: " + event.toString());
+            return true;
+        }
+
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2,
+                               float velocityX, float velocityY) {
+            Log.d(DEBUG_TAG, "onFling: " + event1.toString()+event2.toString());
+            return true;
+        }
+    }
+
 
 //ListAdapter for grid and multiselect callbacks
 //------------------------------------------------------------------------------
@@ -142,13 +176,13 @@ public class GameFragment extends Fragment {
 //click listeners for click to reveal
 //------------------------------------------------------------------------------
     void setupButtons() {
-        Button bLeft = (Button) view.findViewById(R.id.bLeft);
+        bLeft = (Button) view.findViewById(R.id.bLeft);
         bLeft.setOnClickListener(leftClick);
-        Button bTop = (Button) view.findViewById(R.id.bTop);
+        bTop = (Button) view.findViewById(R.id.bTop);
         bTop.setOnClickListener(topClick);
-        Button bBottom = (Button) view.findViewById(R.id.bBottom);
+        bBottom = (Button) view.findViewById(R.id.bBottom);
         bBottom.setOnClickListener(bottomClick);
-        Button bRight = (Button) view.findViewById(R.id.bRight);
+        bRight = (Button) view.findViewById(R.id.bRight);
         bRight.setOnClickListener(rightClick);
     }
 
