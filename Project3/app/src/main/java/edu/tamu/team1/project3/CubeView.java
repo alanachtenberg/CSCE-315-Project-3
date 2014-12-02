@@ -12,13 +12,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class CubeView extends FrameLayout implements Checkable {
     private Context context;
-    private ImageView face, left, top, right, bottom;
+    private TextView face, left, top, right, bottom;
     private boolean selected;
 
     Animation left_to_right_shrink;
@@ -40,11 +40,11 @@ public class CubeView extends FrameLayout implements Checkable {
     }
 
     private void initialize() {
-        face = (ImageView) findViewById(R.id.face);
-        left = (ImageView) findViewById(R.id.left);
-        top = (ImageView) findViewById(R.id.top);
-        right = (ImageView) findViewById(R.id.right);
-        bottom = (ImageView) findViewById(R.id.bottom);
+        face = (TextView) findViewById(R.id.face);
+        left = (TextView) findViewById(R.id.left);
+        top = (TextView) findViewById(R.id.top);
+        right = (TextView) findViewById(R.id.right);
+        bottom = (TextView) findViewById(R.id.bottom);
 
         left_to_right_shrink = AnimationUtils.loadAnimation(context, R.anim.left_to_right_shrink);
         left_to_right_grow = AnimationUtils.loadAnimation(context, R.anim.left_to_right_grow);
@@ -56,7 +56,23 @@ public class CubeView extends FrameLayout implements Checkable {
         right_to_left_grow = AnimationUtils.loadAnimation(context, R.anim.right_to_left_grow);
     }
 
-    public ImageView showLeft() {
+    public void setLeftFace(int id) {
+        left.setText(Integer.toString(id));
+    }
+
+    public void setTopFace(int id) {
+        top.setText(Integer.toString(id));
+    }
+
+    public void setRightFace(int id) {
+        right.setText(Integer.toString(id));
+    }
+
+    public void setBottomFace(int id) {
+        bottom.setText(Integer.toString(id));
+    }
+
+    public TextView showLeft() {
         left.setVisibility(View.VISIBLE);
         left_to_right_grow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -81,7 +97,7 @@ public class CubeView extends FrameLayout implements Checkable {
         return left;
     }
 
-    public ImageView showTop() {
+    public TextView showTop() {
         top.setVisibility(View.VISIBLE);
         top_to_bottom_grow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -106,7 +122,7 @@ public class CubeView extends FrameLayout implements Checkable {
         return top;
     }
 
-    public ImageView showBottom() {
+    public TextView showBottom() {
         bottom.setVisibility(View.VISIBLE);
         bottom_to_top_grow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -131,7 +147,7 @@ public class CubeView extends FrameLayout implements Checkable {
         return bottom;
     }
 
-    public ImageView showRight() {
+    public TextView showRight() {
         right.setVisibility(View.VISIBLE);
         right_to_left_shrink.setAnimationListener(new Animation.AnimationListener() {
             @Override

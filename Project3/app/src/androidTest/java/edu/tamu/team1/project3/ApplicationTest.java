@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.test.ActivityInstrumentationTestCase2;
 
+import java.util.ArrayList;
+
 public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private MainActivity mActivity;
 
@@ -70,6 +72,58 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
 
     public void testXMLParsing() throws Throwable {
         //instantiate XML parsing class
+    }
+
+    public void testGameSetupCorrectly() throws Throwable {
+        //check to make sure fragments get instantiated correctly
+        GameSetupFragment gameSetupFragment = GameSetupFragment.newInstance();
+        Fragment fragPost = startFragment(gameSetupFragment);
+        assertNotNull(fragPost);
+
+        //4x4 should give 16 in adapter
+        final GameFragment gameFragment = GameFragment.newInstance("4x4");
+        startFragment(gameFragment);
+        assertNotNull(gameFragment);
+
+        //check that two of each number have been placed on the board
+        CubeView.Adapter adapter = (CubeView.Adapter) gameFragment.cubeGrid.getAdapter();
+
+        int numCubes = adapter.getCount();
+        assertEquals(16, numCubes);
+
+        final int[] leftCounts = new int[8];
+        final int[] topCounts = new int[8];
+        final int[] rightCounts = new int[8];
+        final int[] bottomCounts = new int[8];
+
+        final ArrayList<CubeView> cubes = adapter.cubes;
+
+        runTestOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (CubeView cube : cubes) {
+                    for(int j = 0; j < 4; j++) {
+                        switch(j) {
+                            case 0: leftCounts[Integer.parseInt(cube.showLeft().getText().toString())]++;
+                                break;
+                            case 1: topCounts[Integer.parseInt(cube.showTop().getText().toString())]++;
+                                break;
+                            case 2: rightCounts[Integer.parseInt(cube.showRight().getText().toString())]++;
+                                break;
+                            case 3: bottomCounts[Integer.parseInt(cube.showBottom().getText().toString())]++;
+                                break;
+                        }
+                    }
+                }
+            }
+        });
+
+        for(int i = 0; i < 8; i++) {
+            assertEquals(2, leftCounts[i]);
+            assertEquals(2, topCounts[i]);
+            assertEquals(2, rightCounts[i]);
+            assertEquals(2, bottomCounts[i]);
+        }
 
 
     }
