@@ -104,13 +104,13 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
                 for (CubeView cube : cubes) {
                     for(int j = 0; j < 4; j++) {
                         switch(j) {
-                            case 0: leftCounts[Integer.parseInt(cube.showLeft().getText().toString())]++;
+                            case 0: leftCounts[cube.showLeft()]++;
                                 break;
-                            case 1: topCounts[Integer.parseInt(cube.showTop().getText().toString())]++;
+                            case 1: topCounts[cube.showTop()]++;
                                 break;
-                            case 2: rightCounts[Integer.parseInt(cube.showRight().getText().toString())]++;
+                            case 2: rightCounts[cube.showRight()]++;
                                 break;
-                            case 3: bottomCounts[Integer.parseInt(cube.showBottom().getText().toString())]++;
+                            case 3: bottomCounts[cube.showBottom()]++;
                                 break;
                         }
                     }

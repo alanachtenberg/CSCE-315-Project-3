@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ public class GameFragment extends Fragment {
     View view;
     GridView cubeGrid;
     Button bLeft, bRight, bBottom, bTop;
-    GestureDetectorCompat detector;//for detecting touch gestures
+    TextView movesTakenTV, timeTakenTV;
+
+    GestureDetectorCompat detector; //for detecting touch gestures
     int sizeX, sizeY;
     CubeView cube;
 
@@ -104,8 +107,8 @@ public class GameFragment extends Fragment {
         });
 
         cubeGrid = (GridView) view.findViewById(R.id.cube_grid);
-        populateGrid();
         setupButtons();
+        populateGrid();
         detector= new GestureDetectorCompat(view.getContext(), new MyGestureListener());
         cubeGrid.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -143,6 +146,9 @@ public class GameFragment extends Fragment {
 //ListAdapter for grid and multiselect callbacks
 //------------------------------------------------------------------------------
     void populateGrid() {
+        matchesRemaining = sizeX*sizeY*2;
+        movesTaken = 0;
+
         ArrayList<CubeView> cubes = new ArrayList<CubeView>();
         ArrayList<ArrayList<Integer>> faceElements = new ArrayList<ArrayList<Integer>>();
 
@@ -214,10 +220,69 @@ public class GameFragment extends Fragment {
         }
     };
 
-    void selectItem(int position) {
+    public static final int LEFT_FACE = 0;
+    public static final int TOP_FACE = 1;
+    public static final int RIGHT_FACE = 2;
+    public static final int BOTTOM_FACE = 3;
 
+    private int matchesRemaining;
+    private int movesTaken;
+    private int timeTaken;
+
+    void checkForMatch(CubeView c1, CubeView c2, int side) {
+        int item1 = -1;
+        int item2 = -1;
+        movesTaken++;
+        movesTakenTV.setText(Integer.toString(movesTaken));
+
+        switch(side) {
+            case LEFT_FACE:
+                item1 = c1.showLeft();
+                item2 = c2.showLeft();
+                break;
+            case TOP_FACE:
+                item1 = c1.showTop();
+                item2 = c2.showTop();
+                break;
+            case RIGHT_FACE:
+                item1 = c1.showRight();
+                item2 = c2.showRight();
+                break;
+            case BOTTOM_FACE:
+                item1 = c1.showBottom();
+                item2 = c2.showBottom();
+                break;
+        }
+
+        if(item1 != -1 && item2 != -1 && item1 == item2) {
+            switch(side) {
+                case LEFT_FACE:
+                    c1.setLeftMatched();
+                    c2.setLeftMatched();
+                    break;
+                case TOP_FACE:
+                    c1.setTopMatched();
+                    c2.setTopMatched();
+                    break;
+                case RIGHT_FACE:
+                    c1.setRightMatched();
+                    c2.setRightMatched();
+                    break;
+                case BOTTOM_FACE:
+                    c1.setBottomMatched();
+                    c2.setBottomMatched();
+                    break;
+            }
+
+            //showPopup();
+
+            matchesRemaining--;
+
+            if(matchesRemaining == 0) {
+                Toast.makeText(context, "Congratulations, you have won the game!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
-
 
 //click listeners for click to reveal
 //------------------------------------------------------------------------------
@@ -230,6 +295,35 @@ public class GameFragment extends Fragment {
         bBottom.setOnClickListener(bottomClick);
         bRight = (Button) view.findViewById(R.id.bRight);
         bRight.setOnClickListener(rightClick);
+
+        movesTakenTV = (TextView) view.findViewById(R.id.movesTaken);
+        timeTakenTV = (TextView) view.findViewById(R.id.timeTaken);
+
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                timeTaken++; //keep track of time in seconds
+                                int sec = timeTaken % 60;
+                                int min = (int)(timeTaken / 60);
+
+                                timeTakenTV.setText(String.format("%d:%02d", min, sec));
+                            }
+                        });
+                    }
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        t.start();
     }
 
     View.OnClickListener leftClick = new View.OnClickListener() {
@@ -238,9 +332,7 @@ public class GameFragment extends Fragment {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
             if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                for (CubeView cube : selectedCubes) {
-                    cube.showLeft();
-                }
+                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), LEFT_FACE);
             }
             else {
                 Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
@@ -254,9 +346,8 @@ public class GameFragment extends Fragment {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
             if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                for (CubeView cube : selectedCubes) {
-                    cube.showTop();
-                }
+                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), TOP_FACE);
+
             }
             else {
                 Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
@@ -270,9 +361,8 @@ public class GameFragment extends Fragment {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
             if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                for (CubeView cube : selectedCubes) {
-                    cube.showBottom();
-                }
+                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), BOTTOM_FACE);
+
             }
             else {
                 Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
@@ -286,9 +376,8 @@ public class GameFragment extends Fragment {
             ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
             // only flip if two cubes are selected
             if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                for (CubeView cube : selectedCubes) {
-                    cube.showRight();
-                }
+                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), RIGHT_FACE);
+
             }
             else {
                 Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();

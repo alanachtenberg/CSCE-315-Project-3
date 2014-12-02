@@ -3,6 +3,7 @@ package edu.tamu.team1.project3;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class CubeView extends FrameLayout implements Checkable {
     private Context context;
     private TextView face, left, top, right, bottom;
+    private int leftId, topId, rightId, bottomId;
     private boolean selected;
 
     Animation left_to_right_shrink;
@@ -57,22 +59,55 @@ public class CubeView extends FrameLayout implements Checkable {
     }
 
     public void setLeftFace(int id) {
+        leftId = id;
         left.setText(Integer.toString(id));
     }
 
     public void setTopFace(int id) {
+        topId = id;
         top.setText(Integer.toString(id));
     }
 
     public void setRightFace(int id) {
+        rightId = id;
         right.setText(Integer.toString(id));
     }
 
     public void setBottomFace(int id) {
+        bottomId = id;
         bottom.setText(Integer.toString(id));
     }
 
-    public TextView showLeft() {
+    public void setLeftMatched() {
+        left.setBackgroundColor(Color.parseColor("#CC000000"));
+        left.setTextColor(Color.parseColor("#FFFFFF"));
+        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    }
+
+    public void setTopMatched() {
+        top.setBackgroundColor(Color.parseColor("#CC000000"));
+        top.setTextColor(Color.parseColor("#FFFFFF"));
+        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    }
+
+    public void setRightMatched() {
+        right.setBackgroundColor(Color.parseColor("#CC000000"));
+        right.setTextColor(Color.parseColor("#FFFFFF"));
+        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    }
+
+    public void setBottomMatched() {
+        bottom.setBackgroundColor(Color.parseColor("#CC000000"));
+        bottom.setTextColor(Color.parseColor("#FFFFFF"));
+        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    }
+
+
+    public int showLeft() {
         left.setVisibility(View.VISIBLE);
         left_to_right_grow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -94,10 +129,10 @@ public class CubeView extends FrameLayout implements Checkable {
         face.startAnimation(left_to_right_shrink);
         left.startAnimation(left_to_right_grow);
 
-        return left;
+        return leftId;
     }
 
-    public TextView showTop() {
+    public int showTop() {
         top.setVisibility(View.VISIBLE);
         top_to_bottom_grow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -119,10 +154,10 @@ public class CubeView extends FrameLayout implements Checkable {
         face.startAnimation(top_to_bottom_shrink);
         top.startAnimation(top_to_bottom_grow);
 
-        return top;
+        return topId;
     }
 
-    public TextView showBottom() {
+    public int showBottom() {
         bottom.setVisibility(View.VISIBLE);
         bottom_to_top_grow.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -144,10 +179,10 @@ public class CubeView extends FrameLayout implements Checkable {
         face.startAnimation(bottom_to_top_shrink);
         bottom.startAnimation(bottom_to_top_grow);
 
-        return bottom;
+        return bottomId;
     }
 
-    public TextView showRight() {
+    public int showRight() {
         right.setVisibility(View.VISIBLE);
         right_to_left_shrink.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -169,7 +204,7 @@ public class CubeView extends FrameLayout implements Checkable {
         face.startAnimation(right_to_left_shrink);
         right.startAnimation(right_to_left_grow);
 
-        return right;
+        return rightId;
     }
 
     @Override
@@ -237,11 +272,7 @@ public class CubeView extends FrameLayout implements Checkable {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                return cubes.get(position);
-            } else {
-                return convertView;
-            }
+            return cubes.get(position);
         }
 
         void select(int position) {

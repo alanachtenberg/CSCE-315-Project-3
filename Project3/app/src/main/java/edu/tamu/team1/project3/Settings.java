@@ -13,7 +13,6 @@ import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -34,7 +33,7 @@ public class Settings {
                     folder.mkdirs();
                 }
 
-                File xmlFile = new File(path, "settings.xml");
+                File xmlFile = new File(path, "msettings.xml");
                 xmlFile.createNewFile();
 
                 InputStream input = context.getResources().openRawResource(R.raw.settings);
@@ -70,7 +69,7 @@ public class Settings {
     public static void setFling(boolean x) throws Exception{
 
         String check;
-        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
 
         Document doc = DocumentBuilderFactory
                 .newInstance()
@@ -119,7 +118,7 @@ public class Settings {
 
     public static void setSwipe(boolean x) throws Exception {
         String check;
-        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
 
         Document doc = DocumentBuilderFactory
                 .newInstance()
@@ -168,7 +167,7 @@ public class Settings {
 //==============================================================
 
     public static void setTheme(String theme) throws Exception {
-        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
         File xmlFile = new File(path);
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -178,20 +177,18 @@ public class Settings {
         Node themeNode = doc.getElementsByTagName("theme").item(0);     // get item by tag name
         themeNode.setTextContent(theme);                                // set the correct value
 
-        DOMSource source = new DOMSource(doc);
-        StreamResult result = new StreamResult(xmlFile);
-
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        transformer.transform(source, result);
-
         //I have no idea why, but it doesn't seem to like writing to the original
         //file created from the raw resource. But redirecting it to another file
         //seems to work just fine, so use this format for all settings
-//        String path2 = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
-//        StreamResult result2 = new StreamResult(new File(path2));
-//        transformer.transform(source, result2);
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(new File(path));
+        transformer.transform(source, result);
+
+        // redirect to another file in order to make it work
+        String path2 = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
+        StreamResult result2 = new StreamResult(new File(path2));
+        transformer.transform(source, result2);
     }
 
     public static String getSettingsTheme() throws Exception{
@@ -211,7 +208,7 @@ public class Settings {
 //==============================================================
 
     public static void setTopic(String topic) throws Exception {
-        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
+        String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
 
         Document doc = DocumentBuilderFactory
                 .newInstance()

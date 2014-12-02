@@ -12,6 +12,10 @@
         android:layout_alignParentTop="true"
         android:horizontalSpacing="8dp"
         android:verticalSpacing="8dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_above="@+id/button_layout"
     />
 
@@ -19,7 +23,7 @@
         android:id="@+id/button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/gameStatsLayout"
         android:weightSum="4" >
         <Button
             android:id="@+id/bLeft"
@@ -47,6 +51,54 @@
             android:layout_height="wrap_content"
             />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameStatsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:background="?attr/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/movesTakenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="22dp"
+            android:text="Moves taken: "/>
+
+        <TextView
+            android:id="@+id/movesTaken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/movesTakenText"
+            android:textSize="22dp"
+            android:text="0"/>
+
+        <TextView
+            android:id="@+id/timeTakenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:textSize="18dp"
+            android:text="Time: "/>
+
+        <TextView
+            android:id="@+id/timeTaken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/timeTakenText"
+            android:layout_alignParentBottom="true"
+            android:textSize="18dp"
+            android:text="0 seconds "/>
+
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
