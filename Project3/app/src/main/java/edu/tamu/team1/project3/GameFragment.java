@@ -1,5 +1,4 @@
 package edu.tamu.team1.project3;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -107,15 +106,14 @@ public class GameFragment extends Fragment {
         populateGrid();
         setupButtons();
         detector= new GestureDetectorCompat(view.getContext(), new MyGestureListener());
+
         cubeGrid.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                detector.onTouchEvent(event);
-                return false;//return false to allow
+                detector.onTouchEvent(event);//detects gestures
+                return v.onTouchEvent(event);//handles click
             }
         });
-//        if(Settings.get)
-//        setupFling();
 
         return view;
     }
@@ -127,14 +125,28 @@ public class GameFragment extends Fragment {
 
         @Override
         public boolean onDown(MotionEvent event) {
-            Log.d(DEBUG_TAG, "onDown: " + event.toString());
-            return true;
+            //Log.d(DEBUG_TAG, "onDown: " + event.toString());
+            return true;//needs to be implemented to return true because every gesture starts with onDown
         }
 
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
                                float velocityX, float velocityY) {
-            Log.d(DEBUG_TAG, "onFling: " + event1.toString()+event2.toString());
+            float absXV= Math.abs(velocityX);
+            float absYV= Math.abs(velocityY);
+            float vSensitivity=500;//500 pixels a second
+            float dSensitivity=150;//150 pixels
+            if (Math.max(absXV,absYV)>vSensitivity) {
+                if (event2.getX() - event1.getX() > dSensitivity)//fling right, we fling right but actually show the left side, ie rotate right
+                    bLeft.callOnClick();//manually invoke on click listener for left button
+                else if (event2.getX()-event1.getX() <dSensitivity*-1)//fling left
+                    bRight.callOnClick();
+                else  if (event2.getY() - event1.getY() > dSensitivity)//fling Down
+                    bTop.callOnClick();
+                else if (event2.getY()-event1.getY() <dSensitivity*-1)//fling Up
+                    bBottom.callOnClick();
+            }
+            Log.d(DEBUG_TAG, "onFling: "+velocityX+" "+velocityY);
             return true;
         }
     }
