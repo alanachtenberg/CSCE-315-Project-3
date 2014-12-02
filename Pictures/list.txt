@@ -1,0 +1,35 @@
+Fish
+_____
+
+1 - Common Clownfish
+2 - Tiger Shark
+3 - Redbelly Piranha
+4 - Atlantic Sailfish
+5 - Great Hammerhead Shark
+6 - American Black Bass
+7 - Common Seahorse
+8 - Alfred manta (Manta Ray)
+
+
+Mammal
+________
+
+1 - Giraffe
+2 - African Bush Elephant
+3 - Arctic Fox
+4 - South American Squirrel Monkey
+5 - Red Kangaroo
+6 - Duck-billed Platypus
+7 - Bottlenose Dolphin
+8 - American Black Bear
+
+Reptile
+_______
+1 - Common Green Iguana
+2 - Komodo Dragon
+3 - Leopard Tortoise
+4 - King Cobra
+5 - Collared Lizard
+6 - American Alligator
+7 - Eastern Diamonback Rattlesnake
+8 - Common Snapping Turtle
