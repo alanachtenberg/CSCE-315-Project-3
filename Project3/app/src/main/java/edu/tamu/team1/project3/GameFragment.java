@@ -389,7 +389,6 @@ public class GameFragment extends Fragment {
             // only flip if two cubes are selected
             if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
                 checkForMatch(selectedCubes.get(0), selectedCubes.get(1), RIGHT_FACE);
-
             }
             else {
                 Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
