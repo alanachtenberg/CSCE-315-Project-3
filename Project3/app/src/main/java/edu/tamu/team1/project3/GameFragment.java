@@ -131,11 +131,11 @@ public class GameFragment extends Fragment {
 
         @Override
         public boolean onFling(MotionEvent event1, MotionEvent event2,
-                               float velocityX, float velocityY) {
+                               float velocityX, float velocityY){
             float absXV= Math.abs(velocityX);
             float absYV= Math.abs(velocityY);
-            float vSensitivity=500;//500 pixels a second
-            float dSensitivity=150;//150 pixels
+            float vSensitivity=400;//400 pixels a second
+            float dSensitivity=100;//100 pixels
             if (Math.max(absXV,absYV)>vSensitivity) {
                 if (event2.getX() - event1.getX() > dSensitivity)//fling right, we fling right but actually show the left side, ie rotate right
                     bLeft.callOnClick();//manually invoke on click listener for left button
