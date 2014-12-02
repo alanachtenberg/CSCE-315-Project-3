@@ -72,6 +72,10 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
 
     public void testXMLParsing() throws Throwable {
         //instantiate XML parsing class
+
+//      String theme = "Red";
+//      assertEquals(theme,Settings.getSettingsTheme());
+
     }
 
     public void testGameSetupCorrectly() throws Throwable {
