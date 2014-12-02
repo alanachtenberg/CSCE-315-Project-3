@@ -67,22 +67,35 @@ public class Settings {
 //======================================================================
 
     public static void setFling(boolean x) throws Exception{
-
         String check;
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
+        File xmlFile = new File(path);
 
-        Document doc = DocumentBuilderFactory
-                .newInstance()
-                .newDocumentBuilder()
-                .parse(new File(path));
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(xmlFile);
 
-        if(!x)
-            check = "false";
-        else
+        if(x)
             check = "true";
+        else
+            check = "false";
 
-        Node themeNode = doc.getElementsByTagName("fling").item(0);     // get item by tag name
-        themeNode.setTextContent(check);                                // set the correct value
+        String swipe;
+        if(Settings.getSwipe())
+            swipe = "true";
+        else
+            swipe = "false";
+
+        Node flingNode = doc.getElementsByTagName("fling").item(0);     // get items by tag names
+        Node swipeNode = doc.getElementsByTagName("swipe").item(0);
+        Node themeNode = doc.getElementsByTagName("theme").item(0);
+        Node topicNode = doc.getElementsByTagName("topic").item(0);
+
+        flingNode.setTextContent(check);                                // set the correct value
+        swipeNode.setTextContent(swipe);
+        themeNode.setTextContent(Settings.getSettingsTheme());
+        topicNode.setTextContent(Settings.getSettingsTopic());
+
 
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         DOMSource source = new DOMSource(doc);
@@ -119,19 +132,32 @@ public class Settings {
     public static void setSwipe(boolean x) throws Exception {
         String check;
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
+        File xmlFile = new File(path);
 
-        Document doc = DocumentBuilderFactory
-                .newInstance()
-                .newDocumentBuilder()
-                .parse(new File(path));
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(xmlFile);
 
-        if(!x)
-            check = "false";
+        String fling;
+        if(Settings.getFling())
+            fling = "true";
         else
-            check = "true";
+            fling = "false";
 
-        Node themeNode = doc.getElementsByTagName("swipe").item(0);     // get item by tag name
-        themeNode.setTextContent(check);                                // set the correct value
+        if(x)
+            check = "true";
+        else
+            check = "false";
+
+        Node flingNode = doc.getElementsByTagName("fling").item(0);     // get items by tag names
+        Node swipeNode = doc.getElementsByTagName("swipe").item(0);
+        Node themeNode = doc.getElementsByTagName("theme").item(0);
+        Node topicNode = doc.getElementsByTagName("topic").item(0);
+
+        flingNode.setTextContent(fling);                                // set the correct values
+        swipeNode.setTextContent(check);
+        themeNode.setTextContent(Settings.getSettingsTheme());
+        topicNode.setTextContent(Settings.getSettingsTopic());
 
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         DOMSource source = new DOMSource(doc);
@@ -174,8 +200,26 @@ public class Settings {
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(xmlFile);
 
-        Node themeNode = doc.getElementsByTagName("theme").item(0);     // get item by tag name
-        themeNode.setTextContent(theme);                                // set the correct value
+        String fling;
+        if(Settings.getFling())
+            fling = "true";
+        else
+            fling = "false";
+        String swipe;
+        if(Settings.getSwipe())
+            swipe = "true";
+        else
+            swipe = "false";
+
+        Node flingNode = doc.getElementsByTagName("fling").item(0);     // get items by tag names
+        Node swipeNode = doc.getElementsByTagName("swipe").item(0);
+        Node themeNode = doc.getElementsByTagName("theme").item(0);
+        Node topicNode = doc.getElementsByTagName("topic").item(0);
+
+        flingNode.setTextContent(fling);                                // set the correct values
+        swipeNode.setTextContent(swipe);
+        themeNode.setTextContent(theme);
+        topicNode.setTextContent(Settings.getSettingsTopic());
 
         //I have no idea why, but it doesn't seem to like writing to the original
         //file created from the raw resource. But redirecting it to another file
@@ -209,15 +253,34 @@ public class Settings {
 
     public static void setTopic(String topic) throws Exception {
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msettings.xml";
+        File xmlFile = new File(path);
 
-        Document doc = DocumentBuilderFactory
-                .newInstance()
-                .newDocumentBuilder()
-                .parse(new File(path));
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(xmlFile);
 
-        Node themeNode = doc.getElementsByTagName("topic").item(0);     // get item by tag name
-        themeNode.setTextContent(topic);                                // set the correct value
+        String fling;
+        if(Settings.getFling())
+            fling = "true";
+        else
+            fling = "false";
+        String swipe;
+        if(Settings.getSwipe())
+            swipe = "true";
+        else
+            swipe = "false";
 
+        Node flingNode = doc.getElementsByTagName("fling").item(0);     // get items by tag names
+        Node swipeNode = doc.getElementsByTagName("swipe").item(0);
+        Node themeNode = doc.getElementsByTagName("theme").item(0);
+        Node topicNode = doc.getElementsByTagName("topic").item(0);
+
+        flingNode.setTextContent(fling);                                // set the correct values
+        swipeNode.setTextContent(swipe);
+        themeNode.setTextContent(Settings.getSettingsTheme());
+        topicNode.setTextContent(topic);
+
+        //redirecting it to another file to make work
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         DOMSource source = new DOMSource(doc);
         StreamResult result = new StreamResult(new File(path));
