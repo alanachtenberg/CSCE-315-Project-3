@@ -7,13 +7,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-<<<<<<< HEAD
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
 import android.view.GestureDetector;
-=======
-import android.util.Log;
->>>>>>> origin/master
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
