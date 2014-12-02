@@ -67,7 +67,7 @@ public class Settings {
 // Functions used for getting and setting the Fling setting for the game
 //======================================================================
 
-    public void setFling(boolean x) throws Exception{
+    public static void setFling(boolean x) throws Exception{
 
         String check;
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
@@ -96,7 +96,7 @@ public class Settings {
         transformer.transform(source, result2);
     }
 
-    public boolean getFling() throws Exception {
+    public static boolean getFling() throws Exception {
         String check;
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
 
@@ -117,7 +117,7 @@ public class Settings {
 // Functions used for getting and setting the Swipe setting for the game
 //======================================================================
 
-    public void setSwipe(boolean x) throws Exception {
+    public static void setSwipe(boolean x) throws Exception {
         String check;
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
 
@@ -145,7 +145,7 @@ public class Settings {
         transformer.transform(source, result2);
     }
 
-    public boolean getSwipe() throws Exception {
+    public static boolean getSwipe() throws Exception {
         String check;
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
 
@@ -167,7 +167,7 @@ public class Settings {
 // Functions used for getting and setting the theme of the game
 //==============================================================
 
-    public void setTheme(String theme) throws Exception {
+    public static void setTheme(String theme) throws Exception {
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/settings.xml";
         File xmlFile = new File(path);
 
@@ -210,7 +210,7 @@ public class Settings {
 // Functions used for getting and setting the topic of the game
 //==============================================================
 
-    public void setTopic(String topic) throws Exception {
+    public static void setTopic(String topic) throws Exception {
         String path = Environment.getExternalStorageDirectory().toString() + "/m_cubed/msetting.xml";
 
         Document doc = DocumentBuilderFactory
