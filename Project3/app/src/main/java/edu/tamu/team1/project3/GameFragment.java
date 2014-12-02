@@ -32,6 +32,15 @@ public class GameFragment extends Fragment {
     Button bLeft, bRight, bBottom, bTop;
     TextView movesTakenTV, timeTakenTV;
 
+    public static final int LEFT_FACE = 0;
+    public static final int TOP_FACE = 1;
+    public static final int RIGHT_FACE = 2;
+    public static final int BOTTOM_FACE = 3;
+
+    private int matchesRemaining;
+    private int movesTaken;
+    private int timeTaken;
+
     GestureDetectorCompat detector; //for detecting touch gestures
     int sizeX, sizeY;
     CubeView cube;
@@ -87,8 +96,13 @@ public class GameFragment extends Fragment {
                             .setPositiveButton("Exit", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    getActivity().getSupportFragmentManager()
-                                            .popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                                    Fragment fragment = GameSetupFragment.newInstance();
+
+                                    fragmentManager.beginTransaction()
+                                            .replace(R.id.container, fragment)
+                                            .addToBackStack(null)
+                                            .commit();
                                 }
                             })
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -128,7 +142,6 @@ public class GameFragment extends Fragment {
 
         @Override
         public boolean onDown(MotionEvent event) {
-            //Log.d(DEBUG_TAG, "onDown: " + event.toString());
             return true;//needs to be implemented to return true because every gesture starts with onDown
         }
 
@@ -141,13 +154,13 @@ public class GameFragment extends Fragment {
             float dSensitivity=100;//100 pixels
             if (Math.max(absXV,absYV)>vSensitivity) {
                 if (event2.getX() - event1.getX() > dSensitivity)//fling right, we fling right but actually show the left side, ie rotate right
-                    bLeft.callOnClick();//manually invoke on click listener for left button
+                    checkForMatch(LEFT_FACE);
                 else if (event2.getX()-event1.getX() <dSensitivity*-1)//fling left
-                    bRight.callOnClick();
+                    checkForMatch(RIGHT_FACE);
                 else  if (event2.getY() - event1.getY() > dSensitivity)//fling Down
-                    bTop.callOnClick();
+                    checkForMatch(TOP_FACE);
                 else if (event2.getY()-event1.getY() <dSensitivity*-1)//fling Up
-                    bBottom.callOnClick();
+                    checkForMatch(BOTTOM_FACE);
             }
             Log.d(DEBUG_TAG, "onFling: "+velocityX+" "+velocityY);
             return true;
@@ -170,7 +183,6 @@ public class GameFragment extends Fragment {
             for (int i = 0; i < (sizeX * sizeY) / 2; i++) {
                 faceElements.get(j).add(i);
                 faceElements.get(j).add(i);
-//                Log.i("ITEM NUMBER", "" + i);
             }
         }
 
@@ -190,7 +202,6 @@ public class GameFragment extends Fragment {
                 //get random item from list and remove it from list
                 int pos = random.nextInt(faceElements.get(j).size());
                 int randomItem = faceElements.get(j).get(pos);
-                Log.i("RANDOM ITEM", randomItem + "");
                 faceElements.get(j).remove(pos);
                 switch (j) {
                     case 0:
@@ -232,68 +243,103 @@ public class GameFragment extends Fragment {
         }
     };
 
-    public static final int LEFT_FACE = 0;
-    public static final int TOP_FACE = 1;
-    public static final int RIGHT_FACE = 2;
-    public static final int BOTTOM_FACE = 3;
+    void checkForMatch(int side) {
+        ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
+        // only flip if two cubes are selected
+        if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
+            CubeView c1 = selectedCubes.get(0);
+            CubeView c2 = selectedCubes.get(1);
 
-    private int matchesRemaining;
-    private int movesTaken;
-    private int timeTaken;
+            int item1 = -1;
+            int item2 = -1;
+            movesTaken++;
+            movesTakenTV.setText(Integer.toString(movesTaken));
 
-    void checkForMatch(CubeView c1, CubeView c2, int side) {
-        int item1 = -1;
-        int item2 = -1;
-        movesTaken++;
-        movesTakenTV.setText(Integer.toString(movesTaken));
-
-        switch(side) {
-            case LEFT_FACE:
-                item1 = c1.showLeft();
-                item2 = c2.showLeft();
-                break;
-            case TOP_FACE:
-                item1 = c1.showTop();
-                item2 = c2.showTop();
-                break;
-            case RIGHT_FACE:
-                item1 = c1.showRight();
-                item2 = c2.showRight();
-                break;
-            case BOTTOM_FACE:
-                item1 = c1.showBottom();
-                item2 = c2.showBottom();
-                break;
-        }
-
-        if(item1 != -1 && item2 != -1 && item1 == item2) {
             switch(side) {
                 case LEFT_FACE:
-                    c1.setLeftMatched();
-                    c2.setLeftMatched();
+                    item1 = c1.showLeft();
+                    item2 = c2.showLeft();
                     break;
                 case TOP_FACE:
-                    c1.setTopMatched();
-                    c2.setTopMatched();
+                    item1 = c1.showTop();
+                    item2 = c2.showTop();
                     break;
                 case RIGHT_FACE:
-                    c1.setRightMatched();
-                    c2.setRightMatched();
+                    item1 = c1.showRight();
+                    item2 = c2.showRight();
                     break;
                 case BOTTOM_FACE:
-                    c1.setBottomMatched();
-                    c2.setBottomMatched();
+                    item1 = c1.showBottom();
+                    item2 = c2.showBottom();
                     break;
             }
 
-            //showPopup();
+            if(item1 != -1 && item2 != -1 && item1 == item2) {
+                c1.setChecked(false);
+                c2.setChecked(false);
+                switch(side) {
+                    case LEFT_FACE:
+                        c1.setLeftMatched();
+                        c2.setLeftMatched();
+                        break;
+                    case TOP_FACE:
+                        c1.setTopMatched();
+                        c2.setTopMatched();
+                        break;
+                    case RIGHT_FACE:
+                        c1.setRightMatched();
+                        c2.setRightMatched();
+                        break;
+                    case BOTTOM_FACE:
+                        c1.setBottomMatched();
+                        c2.setBottomMatched();
+                        break;
+                }
 
-            matchesRemaining--;
+                //showPopup();
 
-            if(matchesRemaining == 0) {
-                Toast.makeText(context, "Congratulations, you have won the game!", Toast.LENGTH_SHORT).show();
+                matchesRemaining--;
+
+                if(matchesRemaining == 0) {
+                    Toast.makeText(context, "Congratulations, you have won the game!", Toast.LENGTH_SHORT).show();
+                    finishGame();
+                }
             }
         }
+        else {
+            Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void finishGame() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("You Won The Game!")
+            .setMessage("Congratulations on winning the game! Do you want to play again, or return to the main menu?")
+            .setPositiveButton("Play Again", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    Fragment fragment = GameFragment.newInstance(sizeX + "x" + sizeY);
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .addToBackStack(null)
+                            .commit();
+                }
+            })
+            .setNegativeButton("Return", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    Fragment fragment = GameSetupFragment.newInstance();
+
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.container, fragment)
+                            .addToBackStack(null)
+                            .commit();
+                }
+            })
+            .create().show();
     }
 
 //click listeners for click to reveal
@@ -341,69 +387,30 @@ public class GameFragment extends Fragment {
     View.OnClickListener leftClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
-            // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), LEFT_FACE);
-            }
-            else {
-                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
-            }
+            checkForMatch(LEFT_FACE);
         }
     };
 
     View.OnClickListener topClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
-            // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), TOP_FACE);
-
-            }
-            else {
-                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
-            }
+            checkForMatch(TOP_FACE);
         }
     };
 
     View.OnClickListener bottomClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
-            // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), BOTTOM_FACE);
-
-            }
-            else {
-                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
-            }
+            checkForMatch(BOTTOM_FACE);
         }
     };
 
     View.OnClickListener rightClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            ArrayList<CubeView> selectedCubes = ((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedItems();
-            // only flip if two cubes are selected
-            if(((CubeView.Adapter)cubeGrid.getAdapter()).getSelectedCount() == 2) {
-                checkForMatch(selectedCubes.get(0), selectedCubes.get(1), RIGHT_FACE);
-            }
-            else {
-                Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
-            }
+            checkForMatch(RIGHT_FACE);
         }
     };
-
-
-//Gesture listeners for swipe to reveal
-//------------------------------------------------------------------------------
-
-
-//Accelerometer listeners for fling to reveal
-//------------------------------------------------------------------------------
-
 
 //misc fragment lifecycle callbacks
 //------------------------------------------------------------------------------

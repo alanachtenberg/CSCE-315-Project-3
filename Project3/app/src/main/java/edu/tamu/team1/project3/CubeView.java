@@ -278,12 +278,12 @@ public class CubeView extends FrameLayout implements Checkable {
         void select(int position) {
             CubeView selectedCube = (CubeView) getItem(position);
             selectedCube.toggle();
-            if(selectedCube.isChecked()) selectedCount++;
-            else selectedCount--;
+//            if(selectedCube.isChecked()) selectedCount++;
+//            else selectedCount--;
         }
 
         int getSelectedCount() {
-            return selectedCount;
+            return getSelectedItems().size();
         }
 
         ArrayList<CubeView> getSelectedItems() {

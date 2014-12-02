@@ -78,7 +78,14 @@ public class SettingsFragment extends Fragment {
         topicSpinner.setOnItemSelectedListener(topicSelected);
 
         try {
-            String theme = Settings.getSettingsTheme();
+            String theme;
+            Settings settings = Settings.deserialize();
+            if(settings != null) {
+                theme = settings.getTheme();
+            }
+            else {
+                theme = "Red";
+            }
 
             if (theme.equals("Red")) {
                 themeSpinner.setSelection(0);

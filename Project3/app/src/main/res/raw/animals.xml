@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animals>
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Common Clownfish</name>
         <scientific>Amphiprion ocellaris</scientific>
         <id>1</id>
@@ -10,7 +11,8 @@
         <Lifespan>Lifespan has not been studied fully in the wild, but it is believed that A. ocellaris may live 6-10 years. Larval fish are extremely susceptible to predation as they have no way of defending themselves and have high mortality rates. Captivity transfer experiments have been performed to address the possibility of restocking the fish in areas where they have been depleted; these find that survival among transferred fish is higher among smaller A. ocellaris.</Lifespan>
     </item>
 
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Tiger Shark</name>
         <scientific>Galeocerdo cuvier</scientific>
         <id>2</id>
@@ -20,7 +22,8 @@
         <Lifespan>The average lifespan of tiger sharks in the wild is 27 years, though some may live to 50 years of age. Tiger sharks in captivity do not live as long, a maximum of 17 to 20 years. In captivity, this species tends to die of starvation rather than old age, as food that is already dead is less appealing to tiger sharks.</Lifespan>
     </item>
 
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Redbelly Piranha</name>
         <scientific>Pygocentrus nattereri</scientific>
         <id>3</id>
@@ -29,7 +32,8 @@
         <Diet>Foraging methods vary in different life stages of P. nattereri. During the day, smaller fish (80-110 mm) search for food. At dawn, late afternoon, and early evening the larger fish (150-240 mm) search for food. Pygocentrus nattereri groups gather in vegetation in order to wait for prey. The group typically includes around 20-30 fishes. In the daytime P. nattereri can be seen lurking or ambushing prey. Two other methods for obtaining food employed by P. nattereri are chasing and scavenging. The hunting mode of chasing was seen after the fish lie and wait in vegetation. The fish then proceed to swim after and eat the fish. P. nattereri has a wide variety of food in its diet, including fins, scales, fish (pieces and whole), insects, snails, and plants. The plant intake of the animal may be an active way of gaining food supplies while scanning for prey.</Diet>
         <Lifespan>Piranhas can live up to eight years.</Lifespan>
     </item>
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Atlantic Sailfish</name>
         <scientific>Istiophorus platypterus</scientific>
         <id>4</id>
@@ -38,7 +42,8 @@
         <Diet>Typical foods of Indo-Pacific sailfish are epipelagic fish such as mackerels, sardines, and anchovies, as well as cephalopods. Sailfish been observed at cruising speeds with their dorsal fins folded back halfway in pursuit of prey. When sailfish attack a school of fish, they fold their fin back completely, achieving attack speeds of up to 110 km/hr. Once they approach their prey, they turn their bill quickly and hit the prey, stunning or killing it. Indo-Pacific sailfish either hunt alone or in small groups. Aside from hunting schools of small fish, Indo-Pacific sailfish are also opportunistic feeders, occasionally preying on neritic and benthic prey, a behavior similar to other billfish such as blue marlin, swordfish, and striped marlin. The particular species eaten by Indo-Pacific sailfish depend on the spatio-temporal distribution of their prey populations. Remnants of cephalopod and fish mandibles found in their stomachs suggest the rapid digestion of soft muscles.</Diet>
         <Lifespan>Indo-Pacific sailfish have an estimated maximum lifespan of 13 to 15 years; however, the average age of catch and release specimens is 4 to 5 years.</Lifespan>
     </item>
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Great Hammerhead Shark</name>
         <scientific>Sphyrna mokarran</scientific>
         <id>5</id>
@@ -47,7 +52,8 @@
         <Diet>Great hammerhead sharks feed on rays, smaller sharks, and many species of bony fishes.</Diet>
         <Lifespan>The typical lifespan of this species is 20–30 years; the record Boca Grande female was estimated to be 40–50 years old.</Lifespan>
     </item>
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>American Black (Largemouth) Bass</name>
         <scientific>Micropterus salmoides</scientific>
         <id>6</id>
@@ -56,7 +62,8 @@
         <Diet>Immature Micropterus salmoides feed on zooplankton and aquatic insects. As they grow their diet shifts to crayfish and other fish species. Sunfish are the food of choice for most adult largemouth bass.</Diet>
         <Lifespan>Largemouth bass live much longer in the wild than they do in captivity. The longest known lifespan of a wild largemouth bass was 23 years. The expected lifespan in the wild, though, is around 15 years. In captivity the longest lifespan recorded was 11 years, while the average age of death in captivity is around 6 years.</Lifespan>
     </item>
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Common (Spotted) Seahorse</name>
         <scientific>Hippocampus kuda</scientific>
         <id>7</id>
@@ -65,7 +72,8 @@
         <Diet>Spotted seahorses are ambush predators and thrive only on live, moving food. They have large appetites and feed mainly on zooplankton, small crustaceans, and larval fishes. Because they are poor swimmers, H. kuda utilize their thick snouts and specialized jaws to suck in their prey</Diet>
         <Lifespan>The natural lifespan of H. kuda and its relatives are virtually unknown. Lab and aquatic observations estimate 3 to 5 years for larger seahorse species and 1 year for smaller species.</Lifespan>
     </item>
-    <item>fish
+    <item>
+        <type>fish</type>
         <name>Alfred manta (Reef Manta) (Manta Ray) </name>
         <scientific>Manta alfredi</scientific>
         <id>8</id>
@@ -77,7 +85,8 @@
 
 
 
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>Giraffe</name>
         <scientific>Giraffa camelopardalis</scientific>
         <id>1</id>
@@ -86,7 +95,8 @@
         <Diet>Giraffes feed on leaves, flowers, seed pods, and fruits. In areas where the savanna floor is salty or full of minerals, they eat soil as well. Giraffes are ruminants and have a four-chambered stomach. Chewing cud while traveling helps to maximize their feeding opportunities.</Diet>
         <Lifespan>Giraffa camelopardalis have a life expectancy between 20 to 27 years in zoos. Giraffes live for 10 to 15 years in the wild.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>African Bush Elephant</name>
         <scientific>Loxodonta africana</scientific>
         <id>2</id>
@@ -95,7 +105,8 @@
         <Diet>Elephants eat vegetation like leaves, roots, bark, grasses and fruit. Each day they can consume anywhere from 220 to 660 pounds (100 to 300 kg) of food, and drink up to 50 gallons (190 L) of water. During the rainy seasons elephants eat grass and herbs like papyrus (Cyperus papyrus) and cat tails (Typha augustifolia). During dry seasons in the savannah they eat leaves collected from thorny trees and bushes. Swamps are a last resort for food because swamp vegetation contains little nutrition. However, dying elephants are often found in these areas because this vegetation is softer and older elephants are often missing teeth.</Diet>
         <Lifespan>Elephants have one of the longest lifespans of all mammals- about seventy years. Their age can be determined by height comparison to the matriarch, tusk length, or more complicated methods like measuring the weight of an eye lens from an elephant that recently died. Aging elephants faces appear sunken and their ears fold toward their body as they get older. They may also suffer from arthritis, tuberculosis or blood diseases like septicemea. Accidental death can occur if an elephant falls down a hill, or if it loses a fight with another elephant. Deaths from poaching still outnumber any natural or accidental occurrences of death in elephants.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>Arctic Fox</name>
         <scientific>Vulpes lagopus</scientific>
         <id>3</id>
@@ -104,7 +115,8 @@
         <Diet>The arctic fox is an opportunistic feeder, eating practically any animal, alive or dead. Although it prefers small mammals, it will eat insects, berries, carrion, and even the stool of animals or human beings. Generally, its winter diet consists of marine mammals, invertebrates, sea birds, fish, and seals. For populations living more inland and in the summer, the diet consists mostly of lemmings. During the summer months, when food is much more readily available, arctic foxes collect a surplus amount of food and carries it back to their dens, where it is stored under stones for later use.</Diet>
         <Lifespan>Arctic Foxes have an average lifespan of 16.3 years.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>South American Squirrel Monkey</name>
         <scientific>Saimiri sciureus</scientific>
         <id>4</id>
@@ -113,7 +125,8 @@
         <Diet>Squirrel monkeys eat mainly fruit and some insects; they also consume some leaves and seeds. The first hour or so of the day is spent searching and collecting fruit. From then on, they look also for spiders and insects. A group spreads throughout the forest in all canopy levels to search for food.</Diet>
         <Lifespan>The average lifespan of a South American Squirrel Monkey is 21 years.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>Red Kangaroo</name>
         <scientific>Macropus rufus</scientific>
         <id>5</id>
@@ -122,7 +135,8 @@
         <Diet>Red kangaroos are exclusively plant-eaters, with a preferred diet of green herbage including grasses and dicotyledonous flowering plants. These herbivores can go without water for long periods of time by consuming moisture-filled succulent plants.</Diet>
         <Lifespan>Lifespans are potentially long in red kangaroos, although most individuals probably do not survive their first year of life. Red kangaroos have been recorded living up to 22 years in the wild.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>Duck-billed Platypus</name>
         <scientific>Ornithorhynchus anatinus</scientific>
         <id>6</id>
@@ -131,7 +145,8 @@
         <Diet>Duck-billed platypuses eat primarily aquatic invertebrates in streams and lakes. They also eat shrimp, fish eggs, and small fish.</Diet>
         <Lifespan>There is little information on the longevity of duck-billed platypuses. They can live up to 12 years in the wild.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>Bottlenosed Dolphin</name>
         <scientific>Tursiops truncatus</scientific>
         <id>7</id>
@@ -140,7 +155,8 @@
         <Diet>The diet of bottlenosed dolphins is broad and varies from one place to another. Inshore bottlenosed dolphins typically feed on fish and invertebrates found near the shoreline, while deep water bottlenosed dolphins typically feed on squid and pelagic fish. Bottlenosed dolphins found along the U.S. Atlantic coast typically feed on Atlantic croakers (Micropogonias undulatus), ‘spot’ fish (Leistomomus xanthurus), and silver perch (Bairdiella chrysoura), while dolphins in South Africa typically feed on African massbankers (Trachurus delagoae), olive grunters (Pomadasys olivaceus), and pandora (Pagellus bellotti). Bottlenosed dolphins typically choose prey between 5 and 30 cm in length. They eat between 4.5 and 16 kg per day, depending on the size of the individual and if it is lactating.</Diet>
         <Lifespan>Bottlenosed dolphins are threatened by a variety of factors, both natural and of human origin. Natural mortality is due to injury, disease, and predation. Male bottlenosed dolphins typically live about 40 to 45 years and female dolphins can live over 50 years (the oldest female documented lived to be 53 years old). Because in many cases dolphins are found in shallow waters, they encounter many humans and human activities. Recreational fishing gear causes many deaths when dolphins become entangled in nets or swallow fishing hooks. Dolphins are sometimes preyed upon by sharks, although this is may be less of a problem now than in the past due to declining shark populations. One of the largest and most serious threats to bottlenosed dolphins is environmental contamination, caused mainly by the increase of human development along shorelines. Chemicals of human origin find their way into coastal ecosystems through runoff from agriculture, residential, and industrial sources.</Lifespan>
     </item>
-    <item>mammal
+    <item>
+        <type>mammal</type>
         <name>American Black Bear</name>
         <scientific>Ursus americanus</scientific>
         <id>8</id>
@@ -149,7 +165,8 @@
         <Diet>Throughout their range in North America, black bears consume primarily grasses and forbs in spring, soft mast in the form of shrub and tree-borne fruits in summer, and a mixture of hard and soft mast in fall. However, the availability of different food types varies regionally. Only a small portion of the diet of bears consists of animal matter, and then primarily in the form of colonial insects and beetles. Most vertebrates are consumed in the form of carrion. Black bears are not active predators and feed on vertebrates only if the opportunity exists.</Diet>
         <Lifespan>Black bears can live to 30 years in the wild but most often live for only about 10, mostly because of encounters with humans. More than 90% of black bear deaths after the age of 18 months are the result of gunshots, trapping, motor vehicle accidents, or other interactions with humans.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>Common Green Iguana</name>
         <scientific>Iguana iguana</scientific>
         <id>1</id>
@@ -158,7 +175,8 @@
         <Diet>Green iguanas are primarily herbivorous. They occasionally eat a small amount of carrion or invertebrates. Green leafy plants or ripe fruits are their preferred foods.</Diet>
         <Lifespan>Iguanas can live for more than 20 years in captivity, although wild iguanas are thought to live only about 8 years. Proper nutrition for growth is a concern for captive management of these animals. Improper housing and nutrition can shorten a captive iguana's lifespan.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>Komodo Dragon</name>
         <scientific>Varanus komodoensis</scientific>
         <id>2</id>
@@ -167,7 +185,8 @@
         <Diet>A normal adult Komodo dragon diet consists mainly of carrion, but it is not uncommon for them to attack and eat a variety of large prey, including goats, pigs, deer, wild boar, horses, water buffalo, and smaller Komodo dragons. Komodo dragons hunt larger prey by ambushing them and delivering a bite. They then follow the injured animal until they succumb to either blood loss or infection. The saliva of Komodo dragons is rich in bacteria that rapidly leads to infection in their prey.</Diet>
         <Lifespan>Although many Varanus komodoensis individuals fall prey to other animals as hatchlings, ones that live to adulthood usually have a lifespan of around 50 years.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>Leopard Tortoise</name>
         <scientific>Psammobates pardalis</scientific>
         <id>3</id>
@@ -176,7 +195,8 @@
         <Diet>Leopard tortoises are primarily herbivorous, with plant material making up approximately 98% of their diet. They consume berries and other fruits when available. Bone fragments and ash may be consumed during times of decreased resource abundance. Although most tortoises consume mostly grasses, leopard tortoises primarily consume forbs. They feed primarily from the ground, particularly from areas within their habitat that produce low-lying forbs.</Diet>
         <Lifespan>In the wild, adult leopard tortoises may live for up to 100 years. No records are available regarding captive individuals. However, typical lifespan for other species of Geochelone tortoises in captivity is approximately 50 years. Factors that may limit the lifespan of leopard tortoises include human impacts through the pet trade and male aggression during courtship and mating.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>King Cobra</name>
         <scientific>Ophiophagus hannah</scientific>
         <id>4</id>
@@ -185,7 +205,8 @@
         <Diet>Ophiophagus hannah normally restricts its diet to cold-blooded animals, particularly other snakes. Some specimens develop a rigid diet of a single species of snake and will refuse any other type. The snakes eaten by the King Cobra are mostly the larger harmless species, such as Asian rat snakes, dhamans, and pythons up to about 10 feet in length.</Diet>
         <Lifespan>The average King Cobra will live 17.1 years in captivity.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>Collared Lizard</name>
         <scientific>Crotaphytus collaris</scientific>
         <id>5</id>
@@ -194,7 +215,8 @@
         <Diet>Crotaphytus collaris is mainly insectivorous and carnivorous. Occasionally their diet may consist of plant matter. C. collaris does vary its diet depending on what is abundant. Food can range from grasshoppers to smaller lizards.</Diet>
         <Lifespan>Collared lizards' life span ranges from 10 to 15 years.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>American Alligator</name>
         <scientific>Alligator mississippiensis</scientific>
         <id>6</id>
@@ -203,7 +225,8 @@
         <Diet>Alligators are basically carnivores, but they eat more than just meat, feeding on anything from sticks to fishing lures to aluminum cans. Mostly, they consume fish, turtles, snakes, and small mammals. When they are young they feed on insects, snails, and small fish.</Diet>
         <Lifespan>While there are currently no methods for determining the age of an alligator while still alive, it is known that those in the wild tend to live to between 35 and 50 year, while those in captive generally live longer, around 65-80 years. Factors which can lead to earlier mortality include successful predation early in life and hunting by humans.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>Eastern Diamondback Rattlesnake</name>
         <scientific>Crotalus adamanteus</scientific>
         <id>7</id>
@@ -212,7 +235,8 @@
         <Diet>The Eastern diamondback feeds primarily on small mammals, from mice to rabbits. It will also eat birds. Young diamondbacks feed primarily on rats and mice, while adults prefer larger prey like rabbits and squirrels. The snakes lie waiting for prey beside logs or near the roots of fallen trees. Diamondbacks locate their prey by odor, as well as by sensing the infrared waves (heat) given off by their warm-blooded prey. Once found, the prey is bitten. The prey is released after the strike, and is then allowed to crawl away and die. The snake will pursue the prey, eating it once it is dead.</Diet>
         <Lifespan>The average Diamondback lives to be 22.8 years in captivity.</Lifespan>
     </item>
-    <item>reptile
+    <item>
+        <type>reptile</type>
         <name>Common Snapping Turtle</name>
         <scientific>Chelydra serpentina</scientific>
         <id>8</id>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animals>
+    <item>
+        <type>mammal</type>
+        <name>Giraffe</name>
+        <scientific>Giraffa camelopardalis</scientific>
+        <id>1</id>
+        <Habitat>Giraffes inhabits arid, dry land. They seek out areas enriched with Acacia growth. Giraffes are found in savannas, grasslands, or open woodlands. Because they only occasionally drink, giraffes can be found away from a water source. Male giraffes can venture into denser wooded areas in search of more foliage.</Habitat>
+        <Physical>Giraffa camelopardalis is the world’s tallest mammal. Male giraffes (bulls) stand a total of 5.7 m from the ground to their horns: 3.3 m at the shoulders with a long neck of 2.4 m. Female giraffes (cows) are 0.7 to 1 m shorter than bulls. Bulls weigh up to 1,930 kg, while cows can weigh up to 1,180 kg. At birth, giraffe calves are 2 m tall from the ground to the shoulders. Newborn giraffes weigh 50 to 55 kg.</Physical>
+        <Diet>Giraffes feed on leaves, flowers, seed pods, and fruits. In areas where the savanna floor is salty or full of minerals, they eat soil as well. Giraffes are ruminants and have a four-chambered stomach. Chewing cud while traveling helps to maximize their feeding opportunities.</Diet>
+        <Lifespan>Giraffa camelopardalis have a life expectancy between 20 to 27 years in zoos. Giraffes live for 10 to 15 years in the wild.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>African Bush Elephant</name>
+        <scientific>Loxodonta africana</scientific>
+        <id>2</id>
+        <Habitat>The habitats occupied by African elephants vary because they can survive long periods of time without water; they occupy deserts, forests, savannas, river valleys and marshes.</Habitat>
+        <Physical>African elephants are the heaviest land animal, and the second tallest in the Animal Kingdom. They are a sexually dimorphic species; males appear larger than females. The height of a bull at his shoulder is about twelve feet (about 3.75 m), when the female’s height is nine feet (about 3 m). They have enormous ears, each measuring about four feet (120-125 cm) across. They have a unique nose that is simply a long, boneless trunk extending from the upper lip. The trunk usually measures about five feet long (about 150 cm) and weighs around 300 pounds (about 135 kg).</Physical>
+        <Diet>Elephants eat vegetation like leaves, roots, bark, grasses and fruit. Each day they can consume anywhere from 220 to 660 pounds (100 to 300 kg) of food, and drink up to 50 gallons (190 L) of water. During the rainy seasons elephants eat grass and herbs like papyrus (Cyperus papyrus) and cat tails (Typha augustifolia). During dry seasons in the savannah they eat leaves collected from thorny trees and bushes. Swamps are a last resort for food because swamp vegetation contains little nutrition. However, dying elephants are often found in these areas because this vegetation is softer and older elephants are often missing teeth.</Diet>
+        <Lifespan>Elephants have one of the longest lifespans of all mammals- about seventy years. Their age can be determined by height comparison to the matriarch, tusk length, or more complicated methods like measuring the weight of an eye lens from an elephant that recently died. Aging elephants faces appear sunken and their ears fold toward their body as they get older. They may also suffer from arthritis, tuberculosis or blood diseases like septicemea. Accidental death can occur if an elephant falls down a hill, or if it loses a fight with another elephant. Deaths from poaching still outnumber any natural or accidental occurrences of death in elephants.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>Arctic Fox</name>
+        <scientific>Vulpes lagopus</scientific>
+        <id>3</id>
+        <Habitat>Arctic foxes are found in the treeless tundra extending through the arctic regions of Eurasia, North America, Greenland, and Iceland. Arctic foxes are found mainly in arctic and alpine tundra, usually in coastal areas.</Habitat>
+        <Physical>Arctic foxes have beautiful white (sometimes blue-gray) coats that act as very effective winter camouflage. The natural hues allow the animal to blend into the tundra's ubiquitous snow and ice. When the seasons change, the fox's coat turns as well, adopting a brown or gray appearance that provides cover among the summer tundra's rocks and plants.</Physical>
+        <Diet>The arctic fox is an opportunistic feeder, eating practically any animal, alive or dead. Although it prefers small mammals, it will eat insects, berries, carrion, and even the stool of animals or human beings. Generally, its winter diet consists of marine mammals, invertebrates, sea birds, fish, and seals. For populations living more inland and in the summer, the diet consists mostly of lemmings. During the summer months, when food is much more readily available, arctic foxes collect a surplus amount of food and carries it back to their dens, where it is stored under stones for later use.</Diet>
+        <Lifespan>Arctic Foxes have an average lifespan of 16.3 years.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>South American Squirrel Monkey</name>
+        <scientific>Saimiri sciureus</scientific>
+        <id>4</id>
+        <Habitat>Squirrel monkeys live in the tropical rainforests of South America, except in the southeastern coastal forests of Brazil. Squirrel monkeys prefer primary and secondary forest, gallery forest and forest edge. They prefer the intermediate forest levels, but they can sometimes be found on the ground or in upper canopy levels. They occupy many different types of forests.</Habitat>
+        <Physical>Squirrel monkeys are up to 12.5 inches long (body length), with a tail of approximately 16 inches. They have a slender, lithe build, with a short greyish coat and bright yellow legs. Their non-prehensile tail often curls over one shoulder when they are resting. They have 36 teeth, and their teeth are sexually dimorphic in that males have large upper canines. Squirrel monkesy possess nails instead of claws, and they have been called 'small, nervous primates'. They are the smallest of the Primate family Cebidae.</Physical>
+        <Diet>Squirrel monkeys eat mainly fruit and some insects; they also consume some leaves and seeds. The first hour or so of the day is spent searching and collecting fruit. From then on, they look also for spiders and insects. A group spreads throughout the forest in all canopy levels to search for food.</Diet>
+        <Lifespan>The average lifespan of a South American Squirrel Monkey is 21 years.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>Red Kangaroo</name>
+        <scientific>Macropus rufus</scientific>
+        <id>5</id>
+        <Habitat>Macropus rufus occurs over most of the dry, inland, central part of Australia. This expansive area includes scrubland, shrubland, grassland, and desert habitats. Red kangaroos live over most of the central part of Australia in areas where rainfall averages less than 500 millimeters. They prefer to forage in open plains habitats with neither trees nor bushes, but are seldom found in regions without shade and shelter from scattered trees.</Habitat>
+        <Physical>Macropus rufus is the largest living marsupial. Males range in total body length from 1,300 to 1,600 mm and females from 850 to 1,050 mm. Tail length is from 1,000 to 1,200 mm for males and 650 to 850 mm for females. They may weigh as much as 90 kg and may reach 1.8 meters in height when standing. Coat color is usually reddish brown in males and bluish gray in females, although these colors are reversed in some areas, with females being reddish and males blue-gray. Red kangaroos are robustly built, with large, well-muscled tails and powerful hindquarters. The tail is strong enough to support the kangaroo's body weight, acts as a balance when jumping, and is used, with the two legs, to form a tripod for resting. The second and third toes of red kangaroos are fused and shaped into a grooming claw. Their foreshortened upper limbs terminate in clawed paws used with great dexterity in eating, grooming, and self-defense. Females have a forward facing pouch and 4 mammae.</Physical>
+        <Diet>Red kangaroos are exclusively plant-eaters, with a preferred diet of green herbage including grasses and dicotyledonous flowering plants. These herbivores can go without water for long periods of time by consuming moisture-filled succulent plants.</Diet>
+        <Lifespan>Lifespans are potentially long in red kangaroos, although most individuals probably do not survive their first year of life. Red kangaroos have been recorded living up to 22 years in the wild.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>Duck-billed Platypus</name>
+        <scientific>Ornithorhynchus anatinus</scientific>
+        <id>6</id>
+        <Habitat>The geographic range of Ornithorhynchus anatinus is restricted to the wetter regions of eastern Australia and Tasmania.Duck-billed platypuses inhabit rivers, lagoons, and streams. They prefer areas with steep banks that contain roots, overhanging vegetation, reeds, and logs. The rivers and streams are usually less than 5 meters in depth. There have been records of them living in aquatic habitats at elevations above 1000 meters.</Habitat>
+        <Physical>Duck-billed platypuses are one of three species of monotremes. These species are unique among mammals in that they retain the ancestral characteristic of egg laying. They have a cloaca through which eggs are laid and both liquid and solid waste is eliminated. Duck-billed platypuses are stream-lined and elongated, they have fur ranging from medium brown to dark brown on the dorsal side and brown to silver-gray on the ventral side. They have bills that closely resemble those of ducks, and flat and broad tails resembling those of beavers. Two nostrils are located on top of their bills and their eyes and ears are on either side of their heads. They have short limbs, naked soles, webbed forefeet and partially-webbed hind feet. Each foot contains five digits each consisting of a broad nail for the forefeet and sharp claws for the hind feet. Males are generally larger than females, and have two venom glands attached to spurs on their hind legs. Females have mammary glands but no nipples. The young have milk teeth while the adults have grinding plates. The young are smaller than adults in size. There is a significant reduction in body fat after winter for both young and adults</Physical>
+        <Diet>Duck-billed platypuses eat primarily aquatic invertebrates in streams and lakes. They also eat shrimp, fish eggs, and small fish.</Diet>
+        <Lifespan>There is little information on the longevity of duck-billed platypuses. They can live up to 12 years in the wild.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>Bottlenosed Dolphin</name>
+        <scientific>Tursiops truncatus</scientific>
+        <id>7</id>
+        <Habitat>Tursiops truncatus typically occupies waters with surface temperatures between 50 and 90 degrees Fahrenheit. Although some bottlenosed dolphins migrate seasonally (for example, populations along the Atlantic coast), they are typically found in tropical, subtropical, and warm temperate waters.</Habitat>
+        <Physical>Bottlenosed dolphins have a fusiform body that lacks many external characteristics of terrestrial mammals, including hair, external ears and hind limbs. A fusiform body reduces turbulence and allows bottlenosed dolphins to cruise underwater at high speeds. Dolphins have front flippers, a dorsal fin and flukes, which are used in swimming. The dorsal fin is tall, curved and set near the middle of the back. These dolphins are typically black to a light gray on their sides, and their bellies are white, sometimes with a slight pink hue. Bottlenosed dolphins are typically 84 to 140 cm at birth, and typically weigh between 14 and 20 kg. Adult males are usually between 244 and 381 cm long, and weigh about 500 kg. Adult females are typically between 228 and 366 cm, and weigh about 250 kg. This sexual dimorphism may be a result of females using energy to achieve sexual maturity at a earlier age than males, while males continue to grow.</Physical>
+        <Diet>The diet of bottlenosed dolphins is broad and varies from one place to another. Inshore bottlenosed dolphins typically feed on fish and invertebrates found near the shoreline, while deep water bottlenosed dolphins typically feed on squid and pelagic fish. Bottlenosed dolphins found along the U.S. Atlantic coast typically feed on Atlantic croakers (Micropogonias undulatus), ‘spot’ fish (Leistomomus xanthurus), and silver perch (Bairdiella chrysoura), while dolphins in South Africa typically feed on African massbankers (Trachurus delagoae), olive grunters (Pomadasys olivaceus), and pandora (Pagellus bellotti). Bottlenosed dolphins typically choose prey between 5 and 30 cm in length. They eat between 4.5 and 16 kg per day, depending on the size of the individual and if it is lactating.</Diet>
+        <Lifespan>Bottlenosed dolphins are threatened by a variety of factors, both natural and of human origin. Natural mortality is due to injury, disease, and predation. Male bottlenosed dolphins typically live about 40 to 45 years and female dolphins can live over 50 years (the oldest female documented lived to be 53 years old). Because in many cases dolphins are found in shallow waters, they encounter many humans and human activities. Recreational fishing gear causes many deaths when dolphins become entangled in nets or swallow fishing hooks. Dolphins are sometimes preyed upon by sharks, although this is may be less of a problem now than in the past due to declining shark populations. One of the largest and most serious threats to bottlenosed dolphins is environmental contamination, caused mainly by the increase of human development along shorelines. Chemicals of human origin find their way into coastal ecosystems through runoff from agriculture, residential, and industrial sources.</Lifespan>
+    </item>
+    <item>
+        <type>mammal</type>
+        <name>American Black Bear</name>
+        <scientific>Ursus americanus</scientific>
+        <id>8</id>
+        <Habitat>Black bears can be found from northern Alaska east across Canada to Labrador and Newfoundland, and south through much of Alaska, virtually all of Canada, and most of the U.S. into central Mexico.</Habitat>
+        <Physical>Black bears are usually black in color, particularly in eastern North America. They usually have a pale muzzle which contrasts with their darker fur and may sometimes have a white chest spot. Western populations are usually lighter in color, being more often brown, cinnamon, or blonde. Some populations in coastal British Columbia and Alaska are creamy white or bluish gray. Total body length in males ranges from 1400 to 2000 mm, and from 1200 to 1600 mm in females. Tail length ranges from 80 to 140 mm. Males weigh between 47 and 409 kg, females weigh between 39 and 236 kg. The distance between the canine teeth is about 4.5 to 5 cm.</Physical>
+        <Diet>Throughout their range in North America, black bears consume primarily grasses and forbs in spring, soft mast in the form of shrub and tree-borne fruits in summer, and a mixture of hard and soft mast in fall. However, the availability of different food types varies regionally. Only a small portion of the diet of bears consists of animal matter, and then primarily in the form of colonial insects and beetles. Most vertebrates are consumed in the form of carrion. Black bears are not active predators and feed on vertebrates only if the opportunity exists.</Diet>
+        <Lifespan>Black bears can live to 30 years in the wild but most often live for only about 10, mostly because of encounters with humans. More than 90% of black bear deaths after the age of 18 months are the result of gunshots, trapping, motor vehicle accidents, or other interactions with humans.</Lifespan>
+    </item>
+</animals>

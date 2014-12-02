@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animals>
+    <item>
+        <type>reptile</type>
+        <name>Common Green Iguana</name>
+        <scientific>Iguana iguana</scientific>
+        <id>1</id>
+        <Habitat>Green iguanas, Iguana iguana, occur throughout Central and South America, from Sinaloa and Veracruz, Mexico, south to the Tropic of Capricorn in Paraguay and southeast Brazil. This large lizard also inhabits many islands throughout the Caribbean region and the coastal eastern Pacific, and has been introduced into southern Florida and in Hawaii. This is the largest known lizard to occur within the borders of the United States.</Habitat>
+        <Physical>Within three years, a young, 12 gram hatchling iguana can become a 1 kg adult (de Vosjoli, 1992). Upon hatching, the length of green iguanas ranges from 17 to 25 cm. Most mature iguanas weigh between 4 and 6 kg, but some in South America, with proper diet can reach up to 8 kg. These large lizards can reach head to tail lengths of around 2 m.</Physical>
+        <Diet>Green iguanas are primarily herbivorous. They occasionally eat a small amount of carrion or invertebrates. Green leafy plants or ripe fruits are their preferred foods.</Diet>
+        <Lifespan>Iguanas can live for more than 20 years in captivity, although wild iguanas are thought to live only about 8 years. Proper nutrition for growth is a concern for captive management of these animals. Improper housing and nutrition can shorten a captive iguana's lifespan.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>Komodo Dragon</name>
+        <scientific>Varanus komodoensis</scientific>
+        <id>2</id>
+        <Habitat>Varanus komodoensis is found only in the lesser Sunda region of the Indonesian archipelago, including the islands of Komodo, Flores, Rinca, and Padar. Adult Komodo dragons live mainly in tropical savannah forests. They prefer open lowland areas with tall grasses and bushes, but are also found in other habitats, such as beaches, ridge tops, and dry riverbeds. Young Komodo dragons are arboreal and live in forested regions until they are eight months old.</Habitat>
+        <Physical>Komodo dragons are the largest lizards, reaching 165 kg and greater than three meters in length. Juveniles are green with yellow and black bands. Adults dull and uniform in color, from brown to grayish red. Their robust bodies are uniformly covered in rough scales. They have strong limbs and a powerful, muscular tail. The heads of Komodo dragons have a rounded snout and ear openings. Their skulls are flexible and have sharp, serrated teeth. Although males tend to grow larger, there are no obvious morphological differences between the sexes.</Physical>
+        <Diet>A normal adult Komodo dragon diet consists mainly of carrion, but it is not uncommon for them to attack and eat a variety of large prey, including goats, pigs, deer, wild boar, horses, water buffalo, and smaller Komodo dragons. Komodo dragons hunt larger prey by ambushing them and delivering a bite. They then follow the injured animal until they succumb to either blood loss or infection. The saliva of Komodo dragons is rich in bacteria that rapidly leads to infection in their prey.</Diet>
+        <Lifespan>Although many Varanus komodoensis individuals fall prey to other animals as hatchlings, ones that live to adulthood usually have a lifespan of around 50 years.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>Leopard Tortoise</name>
+        <scientific>Psammobates pardalis</scientific>
+        <id>3</id>
+        <Habitat>Leopard tortoises occupy a variety of xeric and mesic habitats throughout their geographic range, ranging from dry arid plains to temperate grassland ecosystems. They are intolerant of damp or cold habitats. They have also been reported in mountainous terrain. These tortoises spend most of their time in shrub habitat with low lying vegetation, which serves as their primary food source. In the summer, they seek shelter under various low lying plants.</Habitat>
+        <Physical>Leopard tortoises are the fourth largest tortoise species in the world. They exhibit indeterminate growth and adults range in mass from 15 to 54 kg, with an average of 18 kg. Carapace length ranges from 30 to 70 cm, with an average carapace length of 45 cm. Females are often larger than males. It also is common for leopard tortoises to have moderate carapacial pyramiding, a shell deformity in which scutes exhibit pyramidal growth.</Physical>
+        <Diet>Leopard tortoises are primarily herbivorous, with plant material making up approximately 98% of their diet. They consume berries and other fruits when available. Bone fragments and ash may be consumed during times of decreased resource abundance. Although most tortoises consume mostly grasses, leopard tortoises primarily consume forbs. They feed primarily from the ground, particularly from areas within their habitat that produce low-lying forbs.</Diet>
+        <Lifespan>In the wild, adult leopard tortoises may live for up to 100 years. No records are available regarding captive individuals. However, typical lifespan for other species of Geochelone tortoises in captivity is approximately 50 years. Factors that may limit the lifespan of leopard tortoises include human impacts through the pet trade and male aggression during courtship and mating.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>King Cobra</name>
+        <scientific>Ophiophagus hannah</scientific>
+        <id>4</id>
+        <Habitat>Northern India, east to southern People's Republic of China, including Hong Kong and Hainan; south throughout the Malay Peninsula, and east to western Indonesia and the Philippines.They live near streams in dense or open forest, bamboo thickets, adjacent agricultural areas, and dense mangrove swamps.</Habitat>
+        <Physical>The King Cobra's average size is 10-12 feet, but can reach 18 feet. The full grown King Cobra is yellow, green, brown, or black. There are usually yellowish or white cross-bars or chevrons on its body. The belly may be uniform in color or ornamented with bars. The throat is light yellow or cream-colored. The juveniles are jet-black, with yellow or white cross-bars on the body and tail and four similar cross-bars on the head. The King Cobra is regarded as a fierce and aggressive snake, and its length and size give it an awesome appearance.</Physical>
+        <Diet>Ophiophagus hannah normally restricts its diet to cold-blooded animals, particularly other snakes. Some specimens develop a rigid diet of a single species of snake and will refuse any other type. The snakes eaten by the King Cobra are mostly the larger harmless species, such as Asian rat snakes, dhamans, and pythons up to about 10 feet in length.</Diet>
+        <Lifespan>The average King Cobra will live 17.1 years in captivity.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>Collared Lizard</name>
+        <scientific>Crotaphytus collaris</scientific>
+        <id>5</id>
+        <Habitat>C. collaris inhabit rocky areas with sparse vegetation. Boulder strewn hillsides and rocky outcroppings are common in their living areas. Collared lizards dig under boulders to sleep and lay their eggs</Habitat>
+        <Physical>Colors and markings are diverse in Crotaphytus collaris. They are sexually dimorphic. Males tend to be green to tan colored with patterns of dorsal spots and bars to a speckled pattern across the dorsum. Male C. collaris can also exhibit vivid yellow and orange head coloration. Female C. collaris tend to be less colorful except during breeding season when they exhibit bright orange side spots or bars. Both male and female C. collaris possess two prominent collar-like black bands at their neck, hence their name.</Physical>
+        <Diet>Crotaphytus collaris is mainly insectivorous and carnivorous. Occasionally their diet may consist of plant matter. C. collaris does vary its diet depending on what is abundant. Food can range from grasshoppers to smaller lizards.</Diet>
+        <Lifespan>Collared lizards' life span ranges from 10 to 15 years.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>American Alligator</name>
+        <scientific>Alligator mississippiensis</scientific>
+        <id>6</id>
+        <Habitat>American alligators are found from the southern Virginia-North Carolina border, along the Atlantic coast to Florida and along the Gulf of Mexico as far west as the Rio Grande in Texas. American alligators are usually found in freshwater swamps, marshes, rivers, lakes, and occasionally, smaller bodies of water. It is believed that this preference for calm waters has to do with their swimming and breathing.</Habitat>
+        <Physical>The average size for an adult female is just under 3 meters (9.8 feet), while the adult male usually falls between 4 and 4.5 meters (13 to 14.7 feet). American alligators reaching lengths of 5-6 meters (16 to 20 feet) have been reported in the past, but there have been no recent recordings equaling those lengths.</Physical>
+        <Diet>Alligators are basically carnivores, but they eat more than just meat, feeding on anything from sticks to fishing lures to aluminum cans. Mostly, they consume fish, turtles, snakes, and small mammals. When they are young they feed on insects, snails, and small fish.</Diet>
+        <Lifespan>While there are currently no methods for determining the age of an alligator while still alive, it is known that those in the wild tend to live to between 35 and 50 year, while those in captive generally live longer, around 65-80 years. Factors which can lead to earlier mortality include successful predation early in life and hunting by humans.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>Eastern Diamondback Rattlesnake</name>
+        <scientific>Crotalus adamanteus</scientific>
+        <id>7</id>
+        <Habitat>The Eastern Diamondback lives in the coastal lowlands, ranging from southeast North Carolina to eastern Louisiana, and throughout Florida, including the Florida Keys. The Eastern Diamondback resides in the palmetto flatwoods and dry pinelands of the South. It generally avoids marshes and swamps, but on occasion will live near the borders of wetlands. Occasionally it may venture into salt water, swimming to the outlying Keys off the Florida coast.</Habitat>
+        <Physical>The Eastern diamondback is one of the largest North American snakes, with a record length of 8 feet. However, they are usually 33 to 72 inches in length. The snake has a large head and a bulky body. It has a row of large dark diamonds with brown centers and cream borders down its back. The ground color of the body ranges from olive, to brown, to almost black. The tail is usually a different shade, brownish or gray, and banded with dark rings. At the end of the tail is a well-developed rattle.</Physical>
+        <Diet>The Eastern diamondback feeds primarily on small mammals, from mice to rabbits. It will also eat birds. Young diamondbacks feed primarily on rats and mice, while adults prefer larger prey like rabbits and squirrels. The snakes lie waiting for prey beside logs or near the roots of fallen trees. Diamondbacks locate their prey by odor, as well as by sensing the infrared waves (heat) given off by their warm-blooded prey. Once found, the prey is bitten. The prey is released after the strike, and is then allowed to crawl away and die. The snake will pursue the prey, eating it once it is dead.</Diet>
+        <Lifespan>The average Diamondback lives to be 22.8 years in captivity.</Lifespan>
+    </item>
+    <item>
+        <type>reptile</type>
+        <name>Common Snapping Turtle</name>
+        <scientific>Chelydra serpentina</scientific>
+        <id>8</id>
+        <Habitat>The snapping turtle's range stretches from S. Alberta and east to Nova Scotia in the north, extending south all the way to the Gulf of Mexico and into central Texas. Snapping turtles only live in fresh or brackish water. They prefer water bodies with muddy bottoms and abundant vegetation because concealment is easier.</Habitat>
+        <Physical>The snapping turtle normally has a shell length ranging from 8 -18 1/2"and has a tail nearly as long as the shell. The tail has saw-toothed keels on it. The shell ranges in color from dark brown to tan and can even be black in some individuals. Snapping turtles have characteristic tubercles on their necks and legs. Plastrons of snapping turtles are very small and leave much of the extremities exposed. Snapping turtle necks, legs, and tails have a yellowish color and the head is dark in color.</Physical>
+        <Diet>Snapping turtles will eat nearly anything that they can get their jaws around. They feed on carrion, invertebrates, fish, birds, small mammals, amphibians, and a surprisingly large amount of aquatic vegetation. Snapping turtles kill other turtles by decapitation. This behavior might be territoriality towards other turtles or a very inefficient feeding behavior.</Diet>
+        <Lifespan>In the wild snapping turtles are estimated to live up to 30 years. Snapping turtles are most vulnerable as hatchlings. Once they reach a certain size there are few natural predators of snapping turtles, though they are often hit by cars when searching for new ponds or nesting sites. In captivity they can live up to 47 years.</Lifespan>
+    </item>
+</animals>
