@@ -79,12 +79,25 @@ public class SettingsFragment extends Fragment {
 
         try {
             String theme;
+            String topic;
             Settings settings = Settings.deserialize();
             if(settings != null) {
                 theme = settings.getTheme();
+                if(theme == null || theme.length() == 0) {
+                    theme = "Red";
+                }
+
+                topic = settings.getTopic();
+                if(topic == null || topic.length() == 0) {
+                    topic = "fish";
+                }
+
+                flingSwitch.setChecked(settings.isFling());
+                swipeSwitch.setChecked(settings.isSwipe());
             }
             else {
                 theme = "Red";
+                topic = "fish";
             }
 
             if (theme.equals("Red")) {
@@ -93,6 +106,14 @@ public class SettingsFragment extends Fragment {
                 themeSpinner.setSelection(1);
             } else if (theme.equals("Blue")) {
                 themeSpinner.setSelection(2);
+            }
+
+            if (topic.equals("Fish")) {
+                topicSpinner.setSelection(0);
+            } else if (topic.equals("Mammals")) {
+                topicSpinner.setSelection(1);
+            } else if (topic.equals("Reptiles")) {
+                topicSpinner.setSelection(2);
             }
         }
         catch(Exception e) {
@@ -141,14 +162,14 @@ public class SettingsFragment extends Fragment {
     CompoundButton.OnCheckedChangeListener flingChange = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            Toast.makeText(context, "Fling - " + isChecked, Toast.LENGTH_SHORT).show();
+            Settings.deserialize().setFling(isChecked);
         }
     };
 
     CompoundButton.OnCheckedChangeListener swipeChange = new CompoundButton.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            Toast.makeText(context, "Swipe - " + isChecked, Toast.LENGTH_SHORT).show();
+            Settings.deserialize().setSwipe(isChecked);
         }
     };
 
@@ -165,7 +186,7 @@ public class SettingsFragment extends Fragment {
                 String[] themes = context.getResources().getStringArray(R.array.themes);
 
                 try {
-                    new Settings().setTheme(themes[position]);
+                    Settings.deserialize().setTheme(themes[position]);
                 }
                 catch(Exception e) {
                     e.printStackTrace();
@@ -193,6 +214,7 @@ public class SettingsFragment extends Fragment {
             }
             else {
                 String[] topics = context.getResources().getStringArray(R.array.topics);
+                Settings.deserialize().setTopic(topics[position]);
                 Toast.makeText(context, "Topic - " + topics[position], Toast.LENGTH_SHORT).show();
             }
         }

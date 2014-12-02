@@ -53,9 +53,10 @@ public class MainActivity extends ActionBarActivity implements
         //if it is the first time opening the app, add the xml files in the
         //xml resource directory to internal storage
         try {
-//            if(firstTime) {
-//                Settings.create(this);
-//            }
+            if(firstTime) {
+//                Settings.initialize();
+                preferences.edit().putBoolean("FIRST_TIME", false).apply();
+            }
             String theme;
             Settings settings = Settings.deserialize();
             if(settings != null) {
