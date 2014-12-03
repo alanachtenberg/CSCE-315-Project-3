@@ -21,7 +21,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
 
     private Fragment startFragment(Fragment fragment, String tag) throws Throwable {
         FragmentTransaction transaction = mActivity.getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.container, fragment, tag);
+        transaction.replace(R.id.container, fragment, tag);
         transaction.commit();
         getInstrumentation().waitForIdleSync();
         Fragment frag = mActivity.getSupportFragmentManager().findFragmentByTag(tag);
@@ -194,16 +194,16 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
 
     public void testScientificParser(){
         GameDataValidator validator= new GameDataValidator(getActivity());
-        ArrayList<GameDataValidator.GameData> fish= validator.validate(R.raw.fish);//test fish xml
-        ArrayList<GameDataValidator.GameData> mammal= validator.validate(R.raw.mammal);//test mammal xml
-        ArrayList<GameDataValidator.GameData> reptile= validator.validate(R.raw.reptile);//test mammal xml
+        ArrayList<GameDataValidator.GameData> fish= validator.validate(getActivity(), R.raw.fish);//test fish xml
+        ArrayList<GameDataValidator.GameData> mammal= validator.validate(getActivity(), R.raw.mammal);//test mammal xml
+        ArrayList<GameDataValidator.GameData> reptile= validator.validate(getActivity(), R.raw.reptile);//test mammal xml
 
-        assertNull(fish);// make sure we got something
-        assertNull(mammal);
-        assertNull(reptile);
+        assertNotNull(fish);// make sure we got something
+        assertNotNull(mammal);
+        assertNotNull(reptile);
 
-        assertEquals(8,fish.size());//check to make sure all items were read
-        assertEquals(8,mammal.size());
-        assertEquals(8,reptile.size());
+        assertEquals(8, fish.size());//check to make sure all items were read
+        assertEquals(8, mammal.size());
+        assertEquals(8, reptile.size());
     }
 }
