@@ -1,7 +1,6 @@
 package edu.tamu.team1.project3;
 
 import android.os.Environment;
-import android.util.Log;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -50,27 +49,26 @@ public class Settings {
     }
 
     public String getTopic() {
-        if(topic == null) return "Fish";
+        if(topic == null) return "fish";
         else return topic;
     }
 
     public void setTopic(String topic) {
-        this.topic = topic;
+        this.topic = topic.toLowerCase();
         serialize();
     }
 
     public String getTheme() {
-        if (theme == null) return "Red";
+        if (theme == null) return "red";
         else return theme;
     }
 
     public void setTheme(String theme) {
-        this.theme = theme;
+        this.theme = theme.toLowerCase();
         serialize();
     }
 
     private void serialize() {
-        Log.i("START SERIALIZATION", "starting to write");
         try {
             boolean canWrite;
             String state = Environment.getExternalStorageState();
@@ -81,7 +79,6 @@ public class Settings {
             }
 
             if (canWrite) {
-                Log.i("SERIALIZE", "writing is enabled");
 
                 String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
                 File folder = new File(path);
@@ -97,7 +94,6 @@ public class Settings {
                     serializer.write(this, out);
                 }
             } else {
-                Log.i("SERIALIZE", "writing is disabled");
             }
         }
         catch(Exception e){
@@ -106,7 +102,6 @@ public class Settings {
     }
 
     public static Settings deserialize() {
-        Log.i("START DESERIALIZATION", "starting to read");
         try {
             boolean canWrite;
             String state = Environment.getExternalStorageState();
@@ -117,7 +112,6 @@ public class Settings {
             }
 
             if (canWrite) {
-                Log.i("SERIALIZE", "reading is enabled");
 
                 String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
                 File folder = new File(path);
@@ -132,7 +126,6 @@ public class Settings {
                     return serializer.read(Settings.class, xmlFile);
                 }
             } else {
-                Log.i("SERIALIZE", "reading is disabled");
             }
         }
         catch(Exception e){

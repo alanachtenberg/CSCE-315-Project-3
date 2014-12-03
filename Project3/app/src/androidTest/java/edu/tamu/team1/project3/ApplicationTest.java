@@ -44,14 +44,6 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         int numCubes = gameFragPost.cubeGrid.getAdapter().getCount();
         assertEquals(16, numCubes);
 
-        //6x8 should give 48 in adapter
-        GameFragment gameFragPre1 = GameFragment.newInstance("6x8");
-        GameFragment gameFragPost1 = (GameFragment) startFragment(gameFragPre1, "3");
-        assertNotNull(gameFragPost1);
-
-        int numCubes1 = gameFragPost1.cubeGrid.getAdapter().getCount();
-        assertEquals(48, numCubes1);
-
         //check that no more than two cubes are ever selected
         runTestOnUiThread(new Runnable() {
             @Override
@@ -128,16 +120,16 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         Settings settings = Settings.deserialize();
         // Test theme parsing
         settings.setTheme("Red");
-        assertEquals("Red",settings.getTheme());
-        settings.setTheme("Green");
-        assertEquals("Green",settings.getTheme());
+        assertEquals("red",settings.getTheme());
+        settings.setTheme("green");
+        assertEquals("green",settings.getTheme());
         // Test topic parsing
-        settings.setTopic("Reptiles");
-        assertEquals("Reptiles", settings.getTopic());
+        settings.setTopic("Reptile");
+        assertEquals("reptile", settings.getTopic());
         settings.setTopic("fish");
         assertEquals("fish", settings.getTopic());
-        settings.setTopic("Mammals");
-        assertEquals("Mammals", settings.getTopic());
+        settings.setTopic("Mammal");
+        assertEquals("mammal", settings.getTopic());
 
         // Test fling parsing
         settings.setFling(false);

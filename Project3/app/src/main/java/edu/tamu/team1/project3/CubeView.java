@@ -24,6 +24,7 @@ public class CubeView extends FrameLayout implements Checkable {
     private TextView face;
     private ImageView left, top, right, bottom;
     private int leftId, topId, rightId, bottomId;
+    private boolean leftMatched, topMatched, rightMatched, bottomMatched;
     private boolean selected;
 
     Animation left_to_right_shrink;
@@ -50,6 +51,11 @@ public class CubeView extends FrameLayout implements Checkable {
         top = (ImageView) findViewById(R.id.top);
         right = (ImageView) findViewById(R.id.right);
         bottom = (ImageView) findViewById(R.id.bottom);
+
+        leftMatched = false;
+        topMatched = false;
+        rightMatched = false;
+        bottomMatched = false;
 
         left_to_right_shrink = AnimationUtils.loadAnimation(context, R.anim.left_to_right_shrink);
         left_to_right_grow = AnimationUtils.loadAnimation(context, R.anim.left_to_right_grow);
@@ -100,28 +106,44 @@ public class CubeView extends FrameLayout implements Checkable {
         bottom.setImageResource(getAndroidDrawable(imageName.toLowerCase()));
     }
 
-    public void setLeftMatched() {
-        left.setBackgroundColor(Color.parseColor("#CC000000"));
-        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
-        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    public boolean setLeftMatched() {
+        if(!leftMatched) {
+            leftMatched = true;
+            left.setBackgroundColor(Color.parseColor("#CC000000"));
+            int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+            face.setText(Integer.toString(numberFacesUnmatched - 1));
+        }
+        return leftMatched;
     }
 
-    public void setTopMatched() {
-        top.setBackgroundColor(Color.parseColor("#CC000000"));
-        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
-        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    public boolean setTopMatched() {
+        if(!topMatched) {
+            topMatched = true;
+            top.setBackgroundColor(Color.parseColor("#CC000000"));
+            int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+            face.setText(Integer.toString(numberFacesUnmatched - 1));
+        }
+        return topMatched;
     }
 
-    public void setRightMatched() {
-        right.setBackgroundColor(Color.parseColor("#CC000000"));
-        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
-        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    public boolean setRightMatched() {
+        if(!rightMatched) {
+            rightMatched = true;
+            right.setBackgroundColor(Color.parseColor("#CC000000"));
+            int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+            face.setText(Integer.toString(numberFacesUnmatched - 1));
+        }
+        return rightMatched;
     }
 
-    public void setBottomMatched() {
-        bottom.setBackgroundColor(Color.parseColor("#CC000000"));
-        int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
-        face.setText(Integer.toString(numberFacesUnmatched - 1));
+    public boolean setBottomMatched() {
+        if(!bottomMatched) {
+            bottomMatched = true;
+            bottom.setBackgroundColor(Color.parseColor("#CC000000"));
+            int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
+            face.setText(Integer.toString(numberFacesUnmatched - 1));
+        }
+        return bottomMatched;
     }
 
 

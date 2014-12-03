@@ -63,14 +63,14 @@ public class MainActivity extends ActionBarActivity implements
                 theme = settings.getTheme();
             }
             else {
-                theme = "Red";
+                theme = "red";
             }
 
-            if (theme.equals("Red")) {
+            if (theme.equals("red")) {
                 setTheme(R.style.Red);
-            } else if (theme.equals("Green")) {
+            } else if (theme.equals("green")) {
                 setTheme(R.style.Green);
-            } else if (theme.equals("Blue")) {
+            } else if (theme.equals("blue")) {
                 setTheme(R.style.Blue);
             }
         }

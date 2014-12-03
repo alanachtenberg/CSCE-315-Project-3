@@ -279,26 +279,26 @@ public class GameFragment extends Fragment {
                 c2.setChecked(false);
                 switch(side) {
                     case LEFT_FACE:
-                        c1.setLeftMatched();
-                        c2.setLeftMatched();
+                        if(c1.setLeftMatched() && c2.setLeftMatched()) {
+                            matchesRemaining--;
+                        }
                         break;
                     case TOP_FACE:
-                        c1.setTopMatched();
-                        c2.setTopMatched();
+                        if(c1.setTopMatched() && c2.setTopMatched()) {
+                            matchesRemaining--;
+                        }
                         break;
                     case RIGHT_FACE:
-                        c1.setRightMatched();
-                        c2.setRightMatched();
+                        if(c1.setRightMatched() && c2.setRightMatched()) {
+                            matchesRemaining--;
+                        }
                         break;
                     case BOTTOM_FACE:
-                        c1.setBottomMatched();
-                        c2.setBottomMatched();
+                        if(c1.setBottomMatched() && c2.setBottomMatched()) {
+                            matchesRemaining--;
+                        }
                         break;
                 }
-
-                //showPopup();
-
-                matchesRemaining--;
 
                 if(matchesRemaining == 0) {
                     Toast.makeText(context, "Congratulations, you have won the game!", Toast.LENGTH_SHORT).show();

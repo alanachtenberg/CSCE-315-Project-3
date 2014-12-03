@@ -96,23 +96,23 @@ public class SettingsFragment extends Fragment {
                 swipeSwitch.setChecked(settings.isSwipe());
             }
             else {
-                theme = "Red";
+                theme = "red";
                 topic = "fish";
             }
 
-            if (theme.equals("Red")) {
+            if (theme.equals("red")) {
                 themeSpinner.setSelection(0);
-            } else if (theme.equals("Green")) {
+            } else if (theme.equals("green")) {
                 themeSpinner.setSelection(1);
-            } else if (theme.equals("Blue")) {
+            } else if (theme.equals("blue")) {
                 themeSpinner.setSelection(2);
             }
 
-            if (topic.equals("Fish")) {
+            if (topic.equals("fish")) {
                 topicSpinner.setSelection(0);
-            } else if (topic.equals("Mammal")) {
+            } else if (topic.equals("mammal")) {
                 topicSpinner.setSelection(1);
-            } else if (topic.equals("Reptile")) {
+            } else if (topic.equals("reptile")) {
                 topicSpinner.setSelection(2);
             }
         }
@@ -182,7 +182,6 @@ public class SettingsFragment extends Fragment {
                 inhibitThemeSpinner = false;
             }
             else {
-
                 String[] themes = context.getResources().getStringArray(R.array.themes);
 
                 try {
