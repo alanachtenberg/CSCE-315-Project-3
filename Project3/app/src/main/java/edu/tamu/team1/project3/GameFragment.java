@@ -53,6 +53,7 @@ public class GameFragment extends Fragment {
         fragment.setArguments(bundle);
         return fragment;
     }
+
     public GameFragment() {
         // Required empty public constructor
     }
@@ -121,15 +122,17 @@ public class GameFragment extends Fragment {
         cubeGrid = (GridView) view.findViewById(R.id.cube_grid);
         setupButtons();
         populateGrid();
-        detector= new GestureDetectorCompat(view.getContext(), new MyGestureListener());
 
-        cubeGrid.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                detector.onTouchEvent(event);//detects gestures
-                return v.onTouchEvent(event);//handles click
-            }
-        });
+        if(Settings.deserialize().isSwipe()) {
+            detector= new GestureDetectorCompat(view.getContext(), new MyGestureListener());
+            cubeGrid.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    detector.onTouchEvent(event);//detects gestures
+                    return v.onTouchEvent(event);//handles click
+                }
+            });
+        }
 
         return view;
     }
@@ -149,8 +152,10 @@ public class GameFragment extends Fragment {
                                float velocityX, float velocityY){
             float absXV= Math.abs(velocityX);
             float absYV= Math.abs(velocityY);
-            float vSensitivity=400;//400 pixels a second
-            float dSensitivity=100;//100 pixels
+            final float scale = context.getResources().getDisplayMetrics().density;
+
+            float vSensitivity = (int) (400 * scale + 0.5f);//400 dp / second
+            float dSensitivity = (int) (100 * scale + 0.5f);//100 dp
             if (Math.max(absXV,absYV)>vSensitivity) {
                 if (event2.getX() - event1.getX() > dSensitivity)//fling right, we fling right but actually show the left side, ie rotate right
                     checkForMatch(LEFT_FACE);

@@ -93,7 +93,6 @@ public class Settings {
                     Serializer serializer = new Persister();
                     serializer.write(this, out);
                 }
-            } else {
             }
         }
         catch(Exception e){
