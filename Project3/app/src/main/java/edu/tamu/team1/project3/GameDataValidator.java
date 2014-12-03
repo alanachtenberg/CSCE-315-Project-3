@@ -11,27 +11,13 @@ import org.w3c.dom.NodeList;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
 
 public class GameDataValidator {
-    private Validator validator;
-    private Schema schema;
+    GameDataValidator() {
 
-    GameDataValidator(Context context) {
-        try {
-//            schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);//instantiates factory for schema, specifies language
-//            InputStream filestream = context.getResources().openRawResource(R.raw.schema);
-//            Source schemaSource = new StreamSource(filestream);
-//            schema = schemaFactory.newSchema(schemaSource);
-//            validator = schema.newValidator();
-        } catch (Exception e) {
-            Log.e("GameDataValidator Constructor Exception", e.getMessage());
-            e.printStackTrace();
-        }
     }
 
     public static class GameData{
@@ -47,7 +33,12 @@ public class GameDataValidator {
 
     ArrayList<GameData> validate(Context context, int xmlresId) {
         try {
-            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+//            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+            InputStream filestream = context.getResources().openRawResource(R.raw.schema);
+            Source schemaSource = new StreamSource(filestream);
+//            Schema schema = schemaFactory.newSchema(schemaSource);
+//            Validator validator = schema.newValidator();
+
             // validate the DOM tree
             InputStream xmlfilestream = context.getResources().openRawResource(xmlresId);//xml file
 

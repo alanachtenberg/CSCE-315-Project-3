@@ -193,7 +193,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
     }
 
     public void testScientificParser(){
-        GameDataValidator validator= new GameDataValidator(getActivity());
+        GameDataValidator validator= new GameDataValidator();
         ArrayList<GameDataValidator.GameData> fish= validator.validate(getActivity(), R.raw.fish);//test fish xml
         ArrayList<GameDataValidator.GameData> mammal= validator.validate(getActivity(), R.raw.mammal);//test mammal xml
         ArrayList<GameDataValidator.GameData> reptile= validator.validate(getActivity(), R.raw.reptile);//test mammal xml
