@@ -1,0 +1,26 @@
+DEVLOG
+
+CSCE 315
+PROJECT 3
+Android App
+
+Alan Achtenberg
+Jacob Stone
+Robby Grathwohl
+Casey Brooks
+
+11/12 Casey added base layout for app, drawer layout and fragments
+
+11/11 Alan Created logo and color resources as well as integrated into app
+
+11/15 Casey created cube view, implemented board of cubes(gridview of cube views), implemented animation of rotation and select
+
+11/15 Alan added switch option to settings fragment, created border drawable for textboxes and such
+
+11/16 Casey enabled multiselect of gridview
+
+11/16 Alan created a lot more content for settings fragment as well as tweaked game setup page
+
+11/17 Casey updated unit testing
+
+11/17 alan implemented expandable list view for topics fragment
