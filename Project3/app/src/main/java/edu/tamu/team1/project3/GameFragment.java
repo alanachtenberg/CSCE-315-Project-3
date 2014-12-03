@@ -279,21 +279,25 @@ public class GameFragment extends Fragment {
                     case LEFT_FACE:
                         if(c1.setLeftMatched() && c2.setLeftMatched()) {
                             matchesRemaining--;
+                            showPopup();
                         }
                         break;
                     case TOP_FACE:
                         if(c1.setTopMatched() && c2.setTopMatched()) {
                             matchesRemaining--;
+                            showPopup();
                         }
                         break;
                     case RIGHT_FACE:
                         if(c1.setRightMatched() && c2.setRightMatched()) {
                             matchesRemaining--;
+                            showPopup();
                         }
                         break;
                     case BOTTOM_FACE:
                         if(c1.setBottomMatched() && c2.setBottomMatched()) {
                             matchesRemaining--;
+                            showPopup();
                         }
                         break;
                 }
@@ -307,6 +311,19 @@ public class GameFragment extends Fragment {
         else {
             Toast.makeText(context, "Must select two cubes to reveal", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void showPopup() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Match Made")
+                .setMessage("A match has been made")
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .create().show();
     }
 
     private void finishGame() {
