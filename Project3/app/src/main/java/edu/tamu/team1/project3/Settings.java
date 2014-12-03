@@ -1,13 +1,17 @@
 package edu.tamu.team1.project3;
 
 import android.os.Environment;
+import android.util.Log;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import org.simpleframework.xml.Serializer;
 import org.simpleframework.xml.core.Persister;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 @Root
 public class Settings {
@@ -18,10 +22,10 @@ public class Settings {
     @Element(required=false)
     private String topic;
 
-    @Element(required=false)
+    @Element
     private boolean fling;
 
-    @Element(required=false)
+    @Element
     private boolean swipe;
 
     public Settings() {
@@ -46,7 +50,8 @@ public class Settings {
     }
 
     public String getTopic() {
-        return topic;
+        if(topic == null) return "Fish";
+        else return topic;
     }
 
     public void setTopic(String topic) {
@@ -55,7 +60,8 @@ public class Settings {
     }
 
     public String getTheme() {
-        return theme;
+        if (theme == null) return "Red";
+        else return theme;
     }
 
     public void setTheme(String theme) {
@@ -64,39 +70,75 @@ public class Settings {
     }
 
     private void serialize() {
+        Log.i("START SERIALIZATION", "starting to write");
         try {
-            String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
-            File folder = new File(path);
-            if(!folder.exists()) folder.mkdirs();
+            boolean canWrite;
+            String state = Environment.getExternalStorageState();
+            if (Environment.MEDIA_MOUNTED.equals(state)) {
+                canWrite = true;
+            } else {
+                canWrite = false;
+            }
 
-            File xmlFile = new File(path, "settings.xml");
-            if(!xmlFile.exists()) xmlFile.createNewFile();
+            if (canWrite) {
+                Log.i("SERIALIZE", "writing is enabled");
 
-            Serializer serializer = new Persister();
+                String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
+                File folder = new File(path);
 
-            serializer.write(this, xmlFile);
+                if (!folder.exists()) {
+                    folder.mkdirs();
+                }
+                if (folder.exists()) {
+                    File xmlFile = new File(path, "settings.xml");
+                    final OutputStream out = new BufferedOutputStream(new FileOutputStream(xmlFile, false));
+
+                    Serializer serializer = new Persister();
+                    serializer.write(this, out);
+                }
+            } else {
+                Log.i("SERIALIZE", "writing is disabled");
+            }
         }
-        catch(Exception e) {
+        catch(Exception e){
             e.printStackTrace();
         }
     }
 
     public static Settings deserialize() {
+        Log.i("START DESERIALIZATION", "starting to read");
         try {
-            String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
-            File folder = new File(path);
-            if(!folder.exists()) folder.mkdirs();
+            boolean canWrite;
+            String state = Environment.getExternalStorageState();
+            if (Environment.MEDIA_MOUNTED.equals(state)) {
+                canWrite = true;
+            } else {
+                canWrite = false;
+            }
 
-            File xmlFile = new File(path, "settings.xml");
-            if(!xmlFile.exists()) xmlFile.createNewFile();
-            Serializer serializer = new Persister();
+            if (canWrite) {
+                Log.i("SERIALIZE", "reading is enabled");
 
-            return serializer.read(Settings.class, xmlFile);
+                String path = Environment.getExternalStorageDirectory().getPath() + "/m_cubed";
+                File folder = new File(path);
+
+                if (!folder.exists()) {
+                    folder.mkdirs();
+                }
+                if (folder.exists()) {
+                    File xmlFile = new File(path, "settings.xml");
+
+                    Serializer serializer = new Persister();
+                    return serializer.read(Settings.class, xmlFile);
+                }
+            } else {
+                Log.i("SERIALIZE", "reading is disabled");
+            }
         }
-        catch(Exception e) {
+        catch(Exception e){
             e.printStackTrace();
-            return null;
         }
+        return new Settings();
     }
 
 

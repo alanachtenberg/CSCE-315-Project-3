@@ -19,26 +19,26 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         mActivity = getActivity();
     }
 
-    private Fragment startFragment(Fragment fragment) {
+    private Fragment startFragment(Fragment fragment, String tag) throws Throwable {
         FragmentTransaction transaction = mActivity.getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.container, fragment, "tag");
+        transaction.add(R.id.container, fragment, tag);
         transaction.commit();
         getInstrumentation().waitForIdleSync();
-        Fragment frag = mActivity.getSupportFragmentManager().findFragmentByTag("tag");
+        Fragment frag = mActivity.getSupportFragmentManager().findFragmentByTag(tag);
         return frag;
     }
 
     public void testUI() throws Throwable {
         //check to make sure fragments get instantiated correctly
         GameSetupFragment fragPre = GameSetupFragment.newInstance();
-        Fragment fragPost = startFragment(fragPre);
+        Fragment fragPost = startFragment(fragPre, "1");
         assertNotNull(fragPost);
 
         //check that passing string argument to fragment creates adapter as expected
 
         //4x4 should give 16 in adapter
         GameFragment gameFragPre = GameFragment.newInstance("4x4");
-        final GameFragment gameFragPost = (GameFragment) startFragment(gameFragPre);
+        final GameFragment gameFragPost = (GameFragment) startFragment(gameFragPre, "2");
         assertNotNull(gameFragPost);
 
         int numCubes = gameFragPost.cubeGrid.getAdapter().getCount();
@@ -46,7 +46,7 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
 
         //6x8 should give 48 in adapter
         GameFragment gameFragPre1 = GameFragment.newInstance("6x8");
-        GameFragment gameFragPost1 = (GameFragment) startFragment(gameFragPre1);
+        GameFragment gameFragPost1 = (GameFragment) startFragment(gameFragPre1, "3");
         assertNotNull(gameFragPost1);
 
         int numCubes1 = gameFragPost1.cubeGrid.getAdapter().getCount();
@@ -81,12 +81,12 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
     public void testGameSetupCorrectly() throws Throwable {
         //check to make sure fragments get instantiated correctly
         GameSetupFragment gameSetupFragment = GameSetupFragment.newInstance();
-        Fragment fragPost = startFragment(gameSetupFragment);
+        Fragment fragPost = startFragment(gameSetupFragment, "4");
         assertNotNull(fragPost);
 
         //4x4 should give 16 in adapter
         final GameFragment gameFragment = GameFragment.newInstance("4x4");
-        startFragment(gameFragment);
+        startFragment(gameFragment, "5");
         assertNotNull(gameFragment);
 
         //check that two of each number have been placed on the board
@@ -127,6 +127,55 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
             assertEquals(2, topCounts[i]);
             assertEquals(2, rightCounts[i]);
             assertEquals(2, bottomCounts[i]);
+        }
+    }
+
+    public void testImageLookup() throws Throwable {
+        int[] fish = new int[] {
+            R.drawable.fish1,
+            R.drawable.fish2,
+            R.drawable.fish3,
+            R.drawable.fish4,
+            R.drawable.fish5,
+            R.drawable.fish6,
+            R.drawable.fish7,
+            R.drawable.fish8,
+        };
+
+        int[] reptiles = new int[] {
+            R.drawable.reptile1,
+            R.drawable.reptile2,
+            R.drawable.reptile3,
+            R.drawable.reptile4,
+            R.drawable.reptile5,
+            R.drawable.reptile6,
+            R.drawable.reptile7,
+            R.drawable.reptile8,
+        };
+
+        int[] mammals = new int[] {
+            R.drawable.mammal1,
+            R.drawable.mammal2,
+            R.drawable.mammal3,
+            R.drawable.mammal4,
+            R.drawable.mammal5,
+            R.drawable.mammal6,
+            R.drawable.mammal7,
+            R.drawable.mammal8,
+        };
+
+        CubeView cubeView = new CubeView(getActivity());
+        for(int i = 0; i < 8; i++) {
+            String name;
+
+            name = "fish" + Integer.toString(i+1);
+            assertEquals(fish[i], cubeView.getAndroidDrawable(name));
+
+            name = "reptile" + Integer.toString(i+1);
+            assertEquals(reptiles[i], cubeView.getAndroidDrawable(name));
+
+            name = "mammal" + Integer.toString(i+1);
+            assertEquals(mammals[i], cubeView.getAndroidDrawable(name));
         }
     }
 }

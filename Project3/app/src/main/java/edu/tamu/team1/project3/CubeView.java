@@ -4,7 +4,6 @@ package edu.tamu.team1.project3;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,29 +61,15 @@ public class CubeView extends FrameLayout implements Checkable {
         right_to_left_grow = AnimationUtils.loadAnimation(context, R.anim.right_to_left_grow);
     }
 
-    public int getAndroidDrawable(String pDrawableName){
-//        int resourceId=Resources.getSystem().getIdentifier(pDrawableName, "drawable", "android");
-//        if(resourceId==0){
-//            Log.i("REQUESTED IMAGE", pDrawableName + " not found");
-//
-//            return null;
-//        } else {
-//            Log.i("REQUESTED IMAGE", pDrawableName + " found");
-//
-//            return Resources.getSystem().getDrawable(resourceId);
-//        }
+    //find the desired image by reflection
+    public int getAndroidDrawable(String pDrawableName) {
         try {
             Class res = R.drawable.class;
             Field field = res.getField(pDrawableName);
-            int drawableId = field.getInt(null);
-            Log.i("REQUESTED IMAGE", pDrawableName + " found: " + String.format("#%x", drawableId));
-
-            return drawableId;
+            return field.getInt(null);
         }
         catch(Exception e) {
             e.printStackTrace();
-            Log.i("REQUESTED IMAGE", pDrawableName + " not found");
-
             return 0;
         }
     }
@@ -109,7 +94,9 @@ public class CubeView extends FrameLayout implements Checkable {
 
     public void setBottomFace(int id) {
         bottomId = id;
+
         String imageName = Settings.deserialize().getTopic().trim() + Integer.toString(id+1);
+
         bottom.setImageResource(getAndroidDrawable(imageName.toLowerCase()));
     }
 

@@ -362,17 +362,19 @@ public class GameFragment extends Fragment {
             public void run() {
                 try {
                     while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                timeTaken++; //keep track of time in seconds
-                                int sec = timeTaken % 60;
-                                int min = (int)(timeTaken / 60);
+                        if(getActivity() != null) {
+                            Thread.sleep(1000);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    timeTaken++; //keep track of time in seconds
+                                    int sec = timeTaken % 60;
+                                    int min = timeTaken / 60;
 
-                                timeTakenTV.setText(String.format("%d:%02d", min, sec));
-                            }
-                        });
+                                    timeTakenTV.setText(String.format("%d:%02d", min, sec));
+                                }
+                            });
+                        }
                     }
                 }
                 catch (InterruptedException e) {
