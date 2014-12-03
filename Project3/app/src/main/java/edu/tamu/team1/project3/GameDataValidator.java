@@ -33,7 +33,7 @@ public class GameDataValidator {
 
     ArrayList<GameData> validate(Context context, int xmlresId) {
         try {
-//            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
+//            SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             InputStream filestream = context.getResources().openRawResource(R.raw.schema);
             Source schemaSource = new StreamSource(filestream);
 //            Schema schema = schemaFactory.newSchema(schemaSource);

@@ -205,5 +205,12 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         assertEquals(8, fish.size());//check to make sure all items were read
         assertEquals(8, mammal.size());
         assertEquals(8, reptile.size());
+
+        //check to see if key members of the XML file were parsed into an object
+        GameDataValidator.GameData data = fish.get(0);
+        assertEquals("fish", data.type);
+        assertEquals("Common Clownfish", data.name);
+        assertEquals("Amphiprion ocellaris", data.scientific);
+        assertEquals(1, data.id);
     }
 }
