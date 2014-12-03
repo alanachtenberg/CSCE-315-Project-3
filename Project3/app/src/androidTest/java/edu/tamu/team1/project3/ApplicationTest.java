@@ -70,14 +70,6 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
         });
     }
 
-    public void testXMLParsing() throws Throwable {
-        //instantiate XML parsing class
-
-//      String theme = "Red";
-//      assertEquals(theme,Settings.getSettingsTheme());
-
-    }
-
     public void testGameSetupCorrectly() throws Throwable {
         //check to make sure fragments get instantiated correctly
         GameSetupFragment gameSetupFragment = GameSetupFragment.newInstance();
@@ -128,6 +120,35 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
             assertEquals(2, rightCounts[i]);
             assertEquals(2, bottomCounts[i]);
         }
+
+        //========================================
+        // Test the settings.xml parsing functions
+        //========================================
+
+        Settings settings = Settings.deserialize();
+        // Test theme parsing
+        settings.setTheme("Red");
+        assertEquals("Red",settings.getTheme());
+        settings.setTheme("Green");
+        assertEquals("Green",settings.getTheme());
+        // Test topic parsing
+        settings.setTopic("Reptiles");
+        assertEquals("Reptiles", settings.getTopic());
+        settings.setTopic("fish");
+        assertEquals("fish", settings.getTopic());
+        settings.setTopic("Mammals");
+        assertEquals("Mammals", settings.getTopic());
+
+        // Test fling parsing
+        settings.setFling(false);
+        assertEquals(false, settings.isFling());
+        settings.setFling(true);
+        assertEquals(true, settings.isFling());
+        // Test swipe parsing
+        settings.setSwipe(false);
+        assertEquals(false, settings.isSwipe());
+        settings.setSwipe(true);
+        assertEquals(true, settings.isSwipe());
     }
 
     public void testImageLookup() throws Throwable {
