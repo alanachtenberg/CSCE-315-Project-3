@@ -24,3 +24,23 @@ Casey Brooks
 11/17 Casey updated unit testing
 
 11/17 alan implemented expandable list view for topics fragment
+
+11/18 Alan set theme colors throughout app elements
+
+11/24 Casey got themes to change dynamically
+
+11/25 Jacob worked on getting the Settings XML reading and writing working
+
+11/28 Casey made some changes to Settings class
+
+12/01 Casey implemented algorithm to randomly place the images on cubes, tested just as TextViews. Added functionality to check if cube faces match
+
+12/01 Alan added swipe gestures to GameFragment
+
+12/01 Jacob worked more on Settings class. Lots of trouble where it wouldnt seem to write to the sdcard
+
+12/01-12/02 Robby added the XML files filled with raw scientific data and all their associated images
+
+12/02 Casey scrapped the DOM parser for Settings and included the Simple library for XML parsing by Java annotations on a class. Fixes issue where the file would never get written on the sdcard
+
+12/02 Casey fixed several minor gameplay issues
