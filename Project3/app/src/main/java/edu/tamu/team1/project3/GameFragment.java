@@ -377,7 +377,7 @@ public class GameFragment extends Fragment {
         movesTakenTV = (TextView) view.findViewById(R.id.movesTaken);
         timeTakenTV = (TextView) view.findViewById(R.id.timeTaken);
 
-        Thread t = new Thread() {
+       /* Thread t = new Thread() {
             @Override
             public void run() {
                 try {
@@ -401,9 +401,9 @@ public class GameFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
-        };
+        };*/
 
-        t.start();
+        //t.start();
     }
 
     View.OnClickListener leftClick = new View.OnClickListener() {

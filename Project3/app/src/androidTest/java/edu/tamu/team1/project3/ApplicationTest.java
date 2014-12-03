@@ -191,4 +191,19 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
             assertEquals(mammals[i], cubeView.getAndroidDrawable(name));
         }
     }
+
+    public void testScientificParser(){
+        GameDataValidator validator= new GameDataValidator(getActivity());
+        ArrayList<GameDataValidator.GameData> fish= validator.validate(R.raw.fish);//test fish xml
+        ArrayList<GameDataValidator.GameData> mammal= validator.validate(R.raw.mammal);//test mammal xml
+        ArrayList<GameDataValidator.GameData> reptile= validator.validate(R.raw.reptile);//test mammal xml
+
+        assertNull(fish);// make sure we got something
+        assertNull(mammal);
+        assertNull(reptile);
+
+        assertEquals(8,fish.size());//check to make sure all items were read
+        assertEquals(8,mammal.size());
+        assertEquals(8,reptile.size());
+    }
 }
