@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GestureDetectorCompat;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -162,7 +161,6 @@ public class GameFragment extends Fragment {
                 else if (event2.getY()-event1.getY() <dSensitivity*-1)//fling Up
                     checkForMatch(BOTTOM_FACE);
             }
-            Log.d(DEBUG_TAG, "onFling: "+velocityX+" "+velocityY);
             return true;
         }
     }
