@@ -17,48 +17,40 @@
         android:text="4"
         android:visibility="visible" />
 
-    <TextView
+    <ImageView
         android:id="@+id/left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="64dp"
-        android:text="L"
         android:visibility="gone" />
 
-    <TextView
+    <ImageView
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="64dp"
-        android:text="T"
         android:visibility="gone" />
 
-    <TextView
+    <ImageView
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="64dp"
-        android:text="B"
         android:visibility="gone" />
 
-    <TextView
+    <ImageView
         android:id="@+id/right"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/colorPrimaryLight"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="64dp"
-        android:text="R"
         android:visibility="gone" />
 
 </FrameLayout>

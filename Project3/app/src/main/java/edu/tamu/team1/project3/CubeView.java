@@ -4,6 +4,7 @@ package edu.tamu.team1.project3;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +14,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.Checkable;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class CubeView extends FrameLayout implements Checkable {
     private Context context;
-    private TextView face, left, top, right, bottom;
+    private TextView face;
+    private ImageView left, top, right, bottom;
     private int leftId, topId, rightId, bottomId;
     private boolean selected;
 
@@ -43,10 +47,10 @@ public class CubeView extends FrameLayout implements Checkable {
 
     private void initialize() {
         face = (TextView) findViewById(R.id.face);
-        left = (TextView) findViewById(R.id.left);
-        top = (TextView) findViewById(R.id.top);
-        right = (TextView) findViewById(R.id.right);
-        bottom = (TextView) findViewById(R.id.bottom);
+        left = (ImageView) findViewById(R.id.left);
+        top = (ImageView) findViewById(R.id.top);
+        right = (ImageView) findViewById(R.id.right);
+        bottom = (ImageView) findViewById(R.id.bottom);
 
         left_to_right_shrink = AnimationUtils.loadAnimation(context, R.anim.left_to_right_shrink);
         left_to_right_grow = AnimationUtils.loadAnimation(context, R.anim.left_to_right_grow);
@@ -58,50 +62,77 @@ public class CubeView extends FrameLayout implements Checkable {
         right_to_left_grow = AnimationUtils.loadAnimation(context, R.anim.right_to_left_grow);
     }
 
+    public int getAndroidDrawable(String pDrawableName){
+//        int resourceId=Resources.getSystem().getIdentifier(pDrawableName, "drawable", "android");
+//        if(resourceId==0){
+//            Log.i("REQUESTED IMAGE", pDrawableName + " not found");
+//
+//            return null;
+//        } else {
+//            Log.i("REQUESTED IMAGE", pDrawableName + " found");
+//
+//            return Resources.getSystem().getDrawable(resourceId);
+//        }
+        try {
+            Class res = R.drawable.class;
+            Field field = res.getField(pDrawableName);
+            int drawableId = field.getInt(null);
+            Log.i("REQUESTED IMAGE", pDrawableName + " found: " + String.format("#%x", drawableId));
+
+            return drawableId;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            Log.i("REQUESTED IMAGE", pDrawableName + " not found");
+
+            return 0;
+        }
+    }
+
     public void setLeftFace(int id) {
         leftId = id;
-        left.setText(Integer.toString(id));
+        String imageName = Settings.deserialize().getTopic().trim() + Integer.toString(id + 1);
+        left.setImageResource(getAndroidDrawable(imageName.toLowerCase()));
     }
 
     public void setTopFace(int id) {
         topId = id;
-        top.setText(Integer.toString(id));
+        String imageName = Settings.deserialize().getTopic().trim() + Integer.toString(id+1);
+        top.setImageResource(getAndroidDrawable(imageName.toLowerCase()));
     }
 
     public void setRightFace(int id) {
         rightId = id;
-        right.setText(Integer.toString(id));
+        String imageName = Settings.deserialize().getTopic().trim() + Integer.toString(id+1);
+        right.setImageResource(getAndroidDrawable(imageName.toLowerCase()));
     }
 
     public void setBottomFace(int id) {
         bottomId = id;
-        bottom.setText(Integer.toString(id));
+        String imageName = Settings.deserialize().getTopic().trim() + Integer.toString(id+1);
+        bottom.setImageResource(getAndroidDrawable(imageName.toLowerCase()));
     }
 
     public void setLeftMatched() {
         left.setBackgroundColor(Color.parseColor("#CC000000"));
-        left.setTextColor(Color.parseColor("#FFFFFF"));
         int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
         face.setText(Integer.toString(numberFacesUnmatched - 1));
     }
 
     public void setTopMatched() {
         top.setBackgroundColor(Color.parseColor("#CC000000"));
-        top.setTextColor(Color.parseColor("#FFFFFF"));
         int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
         face.setText(Integer.toString(numberFacesUnmatched - 1));
     }
 
     public void setRightMatched() {
         right.setBackgroundColor(Color.parseColor("#CC000000"));
-        right.setTextColor(Color.parseColor("#FFFFFF"));
         int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
         face.setText(Integer.toString(numberFacesUnmatched - 1));
     }
 
     public void setBottomMatched() {
         bottom.setBackgroundColor(Color.parseColor("#CC000000"));
-        bottom.setTextColor(Color.parseColor("#FFFFFF"));
         int numberFacesUnmatched = Integer.parseInt(face.getText().toString());
         face.setText(Integer.toString(numberFacesUnmatched - 1));
     }
@@ -278,8 +309,6 @@ public class CubeView extends FrameLayout implements Checkable {
         void select(int position) {
             CubeView selectedCube = (CubeView) getItem(position);
             selectedCube.toggle();
-//            if(selectedCube.isChecked()) selectedCount++;
-//            else selectedCount--;
         }
 
         int getSelectedCount() {

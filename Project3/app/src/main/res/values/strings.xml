@@ -30,8 +30,8 @@
     </string-array>
     <string-array name="topics">
         <item>Fish</item>
-        <item>Mammals</item>
-        <item>Reptiles</item>
+        <item>Mammal</item>
+        <item>Reptile</item>
     </string-array>
     <string-array name="fish">
         <item>fishie 1</item>

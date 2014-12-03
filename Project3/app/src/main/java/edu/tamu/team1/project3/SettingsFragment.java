@@ -110,9 +110,9 @@ public class SettingsFragment extends Fragment {
 
             if (topic.equals("Fish")) {
                 topicSpinner.setSelection(0);
-            } else if (topic.equals("Mammals")) {
+            } else if (topic.equals("Mammal")) {
                 topicSpinner.setSelection(1);
-            } else if (topic.equals("Reptiles")) {
+            } else if (topic.equals("Reptile")) {
                 topicSpinner.setSelection(2);
             }
         }
