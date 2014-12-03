@@ -128,7 +128,5 @@ public class ApplicationTest extends ActivityInstrumentationTestCase2<MainActivi
             assertEquals(2, rightCounts[i]);
             assertEquals(2, bottomCounts[i]);
         }
-
-
     }
 }
