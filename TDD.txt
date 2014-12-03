@@ -1,0 +1,15 @@
+Test-Driven Development (TDD) Description
+
+We used TDD for several key aspects of this app: 
+    1) To test that the UI is being created and the fragments are being manipulated correctly
+    2) To test that the game board was being set up correctly
+    3) To test that the settings is being read and written to correctly
+    4) To test that the scientific data is being parsed correctly
+    
+1) We create the fragments that are used in the main app, and instaitiate them within the context of the main activity. We check that they exist before and after being added to the main container, and that they create the correct number of cubes given the dimensions passed to the fragment as an argument. We then test to make sure that we only ever have two cubes selected at once.
+
+2) After creating the game fragment, we need to know whether the pictures added to the sides of the cube are correctly added such that there always exists only one pair of images for each side. We run through the adapter and count the number of times that each image is found for each side, and check that each one is exactly twice. 
+
+3) We check that the settings is working correctly by setting values and checking to see if it returns the same values, which means that it works correctly since, internally, each "setter" will automatically update the XML file.
+
+4) We check that the scientific XMl is parsed correctly by first checking that the size of the data returned by the parse matches the number items in the XML file. Then to check that the data is correctly parsed, we spot check one object to see if the data pulled matches what is in the XML file.
